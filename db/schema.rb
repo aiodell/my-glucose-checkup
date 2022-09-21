@@ -10,17 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_21_154611) do
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+ActiveRecord::Schema[7.0].define(version: 2022_09_21_192425) do
+  create_table "bgl_events", force: :cascade do |t|
+    t.integer "bgl_id", null: false
+    t.integer "event_id", null: false
+    t.index ["bgl_id"], name: "index_bgl_events_on_bgl_id"
+    t.index ["event_id"], name: "index_bgl_events_on_event_id"
   end
 
+  create_table "bgls", force: :cascade do |t|
+    t.integer "value"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_bgls_on_user_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "comment"
+    t.string "category"
+    t.string "range"
+    t.boolean "isHigh"
+    t.boolean "isLow"
+    t.boolean "isInRange"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "bgl_events", "bgls"
+  add_foreign_key "bgl_events", "events"
+  add_foreign_key "bgls", "users"
 end

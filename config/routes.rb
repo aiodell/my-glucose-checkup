@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  resources :users
+  resources :bgl_events
+  resources :events
+  resources :bgls
+  
   get 'pages/home'
 
   post "/signup", to: "users#create"

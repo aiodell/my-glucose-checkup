@@ -4,3 +4,6 @@ Bgl.destroy_all
 User.destroy_all
 
 puts "seeding database"
+
+User.create(
+)

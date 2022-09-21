@@ -1,0 +1,2 @@
+class BglsController < ApplicationController
+end

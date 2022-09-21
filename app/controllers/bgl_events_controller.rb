@@ -1,0 +1,2 @@
+class BglEventsController < ApplicationController
+end
