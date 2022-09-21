@@ -57,8 +57,8 @@ config.action_mailer.default_url_options = {host:'localhost', port: 3000}
   address:              'smtp.gmail.com',
   port:                 587,
   domain:               'localhost',
-  user_name:            ENV["GMAIL_USERNAME"],
-  password:             ENV["GMAIL_PASSWORD"],
+  user_name:            ENV['GMAIL_USERNAME'],
+  password:             ENV['GMAIL_PASSWORD'],
   authentication:       'plain',
   enable_starttls_auto: true  }
 
