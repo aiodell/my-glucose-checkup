@@ -11,6 +11,7 @@ puts "creating users..."
  user1 =User.create(
 			first_name: Faker::Name.first_name,
 			last_name: Faker::Name.last_name,
+			username: Faker::Internet.username,
 			email: Faker::Internet.safe_email,
 			password_digest: Faker::Internet.password(min_length: 8)
 		)
@@ -18,6 +19,7 @@ puts "creating users..."
  user2 =User.create(
 			first_name: Faker::Name.first_name,
 			last_name: Faker::Name.last_name,
+			username: Faker::Internet.username,
 			email: Faker::Internet.safe_email,
 			password_digest: Faker::Internet.password(min_length: 8)
 		)
@@ -25,6 +27,7 @@ puts "creating users..."
  user3 =User.create(
 			first_name: Faker::Name.first_name,
 			last_name: Faker::Name.last_name,
+			username: Faker::Internet.username,
 			email: Faker::Internet.safe_email,
 			password_digest: Faker::Internet.password(min_length: 8)
 		)

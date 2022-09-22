@@ -5,18 +5,18 @@ const Login = ({updateUser}) => {
 	const history = useHistory()
 	const [errors, setErrors] = useState([])
 	const[loginData, setLoginData] = useState({
-		email: "",
+		username: "",
 		password: ""
 	 })
 
-	 const { email, password } = loginData
+	 const { username, password } = loginData
 
 	 const handleChange = (e) => { setLoginData({ ...loginData, [e.target.name]: e.target.value }) }
 
 	 function handleLogin(e){
 		e.preventDefault()
 		const user = {
-				email,
+				username,
 				password
 		}
 		// Logs in user
@@ -44,8 +44,8 @@ const Login = ({updateUser}) => {
 			{errors ? errors.map(e => <section>{e}</section>):null}
 			<form onSubmit={handleLogin}>
 				<div>
-					<label htmlFor= "E-mail"> Email </label>
-					<input type="text" name="email" value={email} placeholder="Email" onChange={handleChange}/>
+					<label htmlFor= "username"> Username </label>
+					<input type="text" name="username" value={username} placeholder="Username" onChange={handleChange}/>
 
 					<label htmlFor="password"> Password </label>
 					<input type="password" name="password" value={password} placeholder="Password" onChange={handleChange}/>

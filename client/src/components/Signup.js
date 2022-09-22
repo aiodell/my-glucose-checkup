@@ -7,6 +7,7 @@ const Signup = () => {
 	const[userData, setUserData] = useState({
 		first_name: "",
 		last_name: "",
+		username: "",
 		email: "",
 		password: "",
 		password_confirmation: ""
@@ -15,6 +16,7 @@ const Signup = () => {
 	const {
 		first_name,
 		last_name,
+		username,
 		password,
 		password_confirmation,
 		email
@@ -34,7 +36,7 @@ const Signup = () => {
 		.then(r => {
 			if(r.ok){
 				r.json().then( () => {
-					history.pushState(`/login`)
+					history.push(`/login`)
 				})
 			} else{ r.json().then(json => setErrors(json.errors)) }
 		})
@@ -43,6 +45,16 @@ const Signup = () => {
 	return(
 		<div>
 			<form onSubmit={handleSignup}>
+
+				<label htmlFor= "username"> Username </label>
+				<input type="text" name="username" value={username} placeholder="Username" onChange={handleChange}/>
+
+				<label htmlFor="password"> Password </label>
+				<input type="password" name="password" value = {password} placeholder="Password" onChange={handleChange}/>
+
+				<label htmlFor="password_confirmation"> Confirm Password </label>
+				<input type="password" name="password_confirmation" value={password_confirmation} placeholder="Confirm Password" onChange={handleChange}/>
+				
 				<label htmlFor="first_name"> First Name </label>
 				<input type="text" name="first_name" value= {first_name} placeholder= "First Name" onChange={handleChange}/>
 				
@@ -51,12 +63,6 @@ const Signup = () => {
 				
 				<label htmlFor= "E-mail"> Email </label>
 				<input type="text" name="email" value={email}  placeholder="Email" onChange={handleChange}/>
-				
-				<label htmlFor="password"> Password </label>
-				<input type="password" name="password" placeholder="Password" onChange={handleChange}/>
-
-				<label htmlFor="password_confirmation"> Confirm Password </label>
-				<input type="password" name="password_confirmation"  placeholder="Confirm Password"value={password_confirmation} onChange={handleChange}/>
 				
 				<div>
 					<button type="submit">Submit</button>
