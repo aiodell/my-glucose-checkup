@@ -3,16 +3,13 @@ Rails.application.routes.draw do
   resources :events
   resources :bgls
   
-  # # Starting pages for email
-  # get 'pages/home'
-  # root "pages#home"
-
   # basic routes
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
   post "/signup", to: "users#create"
   get "/auto-login", to: "users#show"
 
-  post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#destroy"
+
 
   
 end

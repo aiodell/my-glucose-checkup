@@ -1,22 +1,15 @@
+import { useState, useEffect } from "react"
+import {Link, useHistory, useParams } from "react-router-dom"
 
-const Dashboard = () => {
-
-	// redirect user to home page if they try to get to dashboard
-	// useEffect(()=> {
-	// 	fetch('/bgls')
-	// 	.then(res => {
-	// 		if(res.ok){
-	// 			res.json().then(appts => setAppointments(appts))				
-	// 		}else { res.json().then(data => { 
-	// 			setErrors(data.error)
-	// 			history.push('/login')
-	// 			})
-	// 		}
-	// 	})
-	// }, [])
+const Dashboard = ({currentUser}) => {
+	const [currentReading, setCurrentReading] = useState({})
+	const [lowestReading, setLowestReading] = useState({})
+	const [highestReading, setHighestReading] = useState({})
+	const params = useParams()
+	const history= useHistory()
 
 	return(
-		<div></div>
+		<></>
 	)
 }
 
