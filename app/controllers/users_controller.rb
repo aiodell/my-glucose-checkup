@@ -1,10 +1,24 @@
 class UsersController < ApplicationController
-
+	skip_before_action :authenticate_user
 	# /POST create new user
 	def create
-    @user = User.new(user_params)
-	render json: @user, status: :created
+    @user = User.create!(user_params)
+	if @user.valid?
+		session[:user] = user.id
+		render json: @user, status: :created
+	else
+		render json: { errors: ["Invalid email or password"]}, status: :unprocessable_entity
     end
+
+	# /GET get a single user
+	def show
+		user = User.find_by(id: session[:user_id])
+		if session[:user_id]
+			render json: user, status: :ok
+		else
+			render json: { errors: ["Not Authorized"]}, status: :unauthorized
+		end
+	end
 
 	private
 
