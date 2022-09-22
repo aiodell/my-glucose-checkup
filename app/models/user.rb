@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_secure_password
   has_many :bgls
   after_create :send_welcome_email
 
