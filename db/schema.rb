@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema[7.0].define(version: 2022_09_21_192425) do
   create_table "bgl_events", force: :cascade do |t|
+    t.boolean "is_high"
+    t.boolean "is_low"
+    t.boolean "is_in_range"
     t.integer "bgl_id", null: false
     t.integer "event_id", null: false
     t.index ["bgl_id"], name: "index_bgl_events_on_bgl_id"
@@ -29,10 +32,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_21_192425) do
   create_table "events", force: :cascade do |t|
     t.string "comment"
     t.string "category"
-    t.string "range"
-    t.boolean "isHigh"
-    t.boolean "isLow"
-    t.boolean "isInRange"
   end
 
   create_table "users", force: :cascade do |t|
