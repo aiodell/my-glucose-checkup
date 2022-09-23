@@ -1,13 +1,9 @@
 import { useState, useEffect } from "react"
 import {Link, useHistory } from "react-router-dom"
 
-const AllReadings = ({currentUser, readings, setReadings}) => {
+const AllReadings = ({readings, setReadings}) => {
 	const [errors, setErrors] = useState([])
 	const history = useHistory()
-
-	const test = () => {
-		console.log(currentUser)
-	}
 
 	useEffect(() => {
 		fetch("/bgls")
@@ -40,9 +36,8 @@ const AllReadings = ({currentUser, readings, setReadings}) => {
 
 	return(
 		<>
-			<button onClick={test}>user</button>
-			{renderReadings}
 			<button onClick={newReading}>New Reading</button>
+			{renderReadings}
 		</>
 	)
 }

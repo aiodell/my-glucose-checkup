@@ -36,7 +36,7 @@ const NewReading = ({addNewReading}) => {
 		})
 	}
 
-	// if cancelled, return to all readings temporarily
+	// if cancelled, return to all readings
 	const toAllReadings = () => {
 		history.push("/bgls/all")
 	}

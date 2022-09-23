@@ -6,7 +6,7 @@ import Signup from "./components/Signup"
 import Dashboard from "./components/Dashboard"
 import AllReadings from "./components/AllReadings"
 import NewReading from "./components/NewReading"
-import logo from './logo.svg';
+import Home from "./components/Home"
 import './styles.css';
 
 const App = () => {
@@ -14,6 +14,7 @@ const App = () => {
   const [readings, setReadings] = useState([])
   const history = useHistory()
   
+  // push user to dashboard if already logged in
   useEffect( () => {
     fetch(`/auto-login`)
     .then((r) => {
@@ -24,25 +25,11 @@ const App = () => {
     })
   }, [])
 
-  
-	const handleLogout = (e) => {
-		fetch(`/logout`, {
-			method: 'DELETE'
-		})
-			.then(() => {
-				updateUser("")
-				history.push('/login')
-			})
-	}
-
-const addNewReading = (newReading) => {
+  const addNewReading = (newReading) => {
 		setReadings(readings => [...readings, newReading])
 	}
  
   const updateUser = (user) => setCurrentUser(user)
-
-  const signupPage = () => {history.push(`/signup`)}
-  const loginPage = () => {history.push(`/login`)}
   
   return (
    <div>
@@ -62,7 +49,6 @@ const addNewReading = (newReading) => {
       </Route>
       <Route exact path= "/bgls/all">
         <AllReadings
-        currentUser = {currentUser}
         readings = {readings}
         setReadings = {setReadings}/>
       </Route>
@@ -71,6 +57,9 @@ const addNewReading = (newReading) => {
           currentUser = {currentUser}
           addNewReading = {addNewReading}
         />
+      </Route>
+      <Route exact path ="/">
+        <Home />
       </Route>
     </Switch>
    </div>
