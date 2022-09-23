@@ -8,15 +8,14 @@ const NavBar = ({updateUser, currentUser}) => {
 		fetch(`/logout`, {
 			method: 'DELETE'
 		})
-			.then(() => {
-				updateUser("")
-				history.push('/login')
-			})
+		.then(() => {
+			updateUser("")
+			history.push('/')
+		})
 	}
 
 	return(
 		<div>
-			NavBar
 			{currentUser ? <button onClick={handleLogout}>Log Out</button> : null}
 		</div>
 	)

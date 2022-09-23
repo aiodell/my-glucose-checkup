@@ -8,17 +8,13 @@ const Dashboard = ({currentUser}) => {
 	const params = useParams()
 	const history= useHistory()
 
-	const test = () => {
-		console.log(currentUser)
-	}
-	
 	const toReadings = () => {
 		history.push("/bgls/all")
 	}
+
 	return(
 		<>
-		<button onClick={test}>user</button>
-		<button onClick={toReadings}>All Readings</button>
+			<button onClick={toReadings}>All Readings</button>
 		</>
 	)
 }
