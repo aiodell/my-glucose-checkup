@@ -10,11 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_22_175343) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_23_192817) do
   create_table "bgl_events", force: :cascade do |t|
-    t.boolean "is_high"
-    t.boolean "is_low"
-    t.boolean "is_in_range"
     t.integer "bgl_id", null: false
     t.integer "event_id", null: false
     t.index ["bgl_id"], name: "index_bgl_events_on_bgl_id"
