@@ -8,12 +8,14 @@ category = ["fasting", "exercise", "before meal", "after meal", "other"]
 puts "seeding database"
 
 puts "creating users..."
+puts "this is gonna take a while..."
  user1 =User.create(
 			first_name: Faker::Name.first_name,
 			last_name: Faker::Name.last_name,
 			username: Faker::Internet.username,
 			email: Faker::Internet.safe_email,
-			password_digest: Faker::Internet.password(min_length: 8)
+			password: "123",
+			password_confirmation:"123"
 		)
 
  user2 =User.create(
@@ -21,7 +23,8 @@ puts "creating users..."
 			last_name: Faker::Name.last_name,
 			username: Faker::Internet.username,
 			email: Faker::Internet.safe_email,
-			password_digest: Faker::Internet.password(min_length: 8)
+			password: "123",
+			password_confirmation: "123"
 		)
 
  user3 =User.create(
@@ -29,52 +32,46 @@ puts "creating users..."
 			last_name: Faker::Name.last_name,
 			username: Faker::Internet.username,
 			email: Faker::Internet.safe_email,
-			password_digest: Faker::Internet.password(min_length: 8)
+			password:"123",
+			password_confirmation: "123"
 		)
 
 puts "seeding bgl data"
-puts "this is gonna take a while..."
-50.times do
-	value = rand(65..185)
-	Bgl.create(
-		value: value,
-		user_id: user1.id
-		)
-end
 
-30.times do
-	value = rand(65..185)
-	Bgl.create(
-		value: value,
-		user_id: user2.id
-		)
-end
+bgl1 = user1.bgls.create(
+	value: rand(75..185)
+)
 
-40.times do
-	value = rand(65..185)
-	Bgl.create(
-		value: value,
-		user_id: user3.id
-		)
-end
+bgl2 = user1.bgls.create(
+	value: rand(75..185)
+)
 
-puts "seeding events"
-80.times do
-	Event.create(
-		comment: Faker::Hipster.sentences(number: 1),
-		category: category.sample,
-	)
-end
+bgl3 = user1.bgls.create(
+	value: rand(75..185)
+)
+
+bgl3.events.create(
+	comment: Faker::Hipster.sentence(word_count: 3),
+	category: category.sample
+)
+
+bgl3.events.create(
+	comment: Faker::Hipster.sentence(word_count: 3),
+	category: category.sample
+)
 
 
-85.times do
-	BglEvent.create(
-		is_high: false,
-		is_low: false,
-		is_in_range: false,
-		bgl_id:  Bgl.all.sample.id,
-		event_id: Event.all.sample.id
- 	)
-end
+bgl2.events.create(
+	comment: Faker::Hipster.sentence(word_count: 3),
+	category: category.sample
+)
+
+
+bgl1.events.create(
+	comment: Faker::Hipster.sentence(word_count: 3),
+	category: category.sample
+)
+
+
 
 puts "seeding complete"

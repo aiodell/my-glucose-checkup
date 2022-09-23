@@ -25,14 +25,14 @@ const Login = ({updateUser}) => {
 			headers:{"Content-Type": "application/json"},
 			body:JSON.stringify(user)
 		})
-		.then(res => {
-			if(res.ok){
-					res.json().then(user => {
+		.then(r => {
+			if(r.ok){
+					r.json().then(user => {
 						updateUser(user)
 						history.push(`/dashboard`)
 					})
 			}else {
-					res.json().then(json => setErrors(json.errors))
+					r.json().then(json => setErrors(json.errors))
 			}
 		})
 	}
