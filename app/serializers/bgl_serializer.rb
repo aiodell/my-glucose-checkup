@@ -1,5 +1,5 @@
 class BglSerializer < ActiveModel::Serializer
-  attributes :value, :created_at
+  attributes :id, :value, :created_at
   has_one :user
 
   def created_at

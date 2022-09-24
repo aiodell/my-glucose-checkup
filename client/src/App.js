@@ -60,7 +60,7 @@ const App = () => {
         <NewReading
           addNewReading = {addNewReading}
         />
-      <Route exact path= "/bgl/:id/event-details">
+      <Route exact path= "/bgl/:id/">
         <EventDetails 
           
         />
