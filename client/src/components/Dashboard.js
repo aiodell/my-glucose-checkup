@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
-import {Link, useHistory, useParams } from "react-router-dom"
+import {useHistory, useParams } from "react-router-dom"
 
-const Dashboard = ({currentUser}) => {
+const Dashboard = ({currentUser, readings, setReadings}) => {
 	const [currentReading, setCurrentReading] = useState({})
 	const [lowestReading, setLowestReading] = useState({})
 	const [highestReading, setHighestReading] = useState({})
@@ -11,11 +11,14 @@ const Dashboard = ({currentUser}) => {
 	const toReadings = () => {
 		history.push("/bgls/all")
 	}
+	
+	//events will go here
 
 	return(
-		<>
+		<div>
 			<button onClick={toReadings}>All Readings</button>
-		</>
+		</div>
+			
 	)
 }
 
