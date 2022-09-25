@@ -1,17 +1,16 @@
 class EventsController < ApplicationController
 
 	def index
-		Event.all
+		render json: Event.all
 	end
 
-	def create
-		bgl = @bgl
-		event = bgl.events.create!(event_params)
-		render json: event, status: :created
+	def show
+		event = find_event
+		render json: event, status:ok
 	end
 
 	def update
-		event = Event.find_by( user_id: session[:user_id], id: params[:id] )
+		event = find_event
 		event.update!(event_params)
 		render json: event, status: :accepted
 	end
@@ -19,8 +18,13 @@ class EventsController < ApplicationController
 	private
 
 	def event_params
-		params.permit(:comment)
+		params.permit(:category)
 	end
+
+	def find_event
+		EVent.find(params[:id])
+	end
+
 
 
 
