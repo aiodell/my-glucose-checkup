@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_23_192817) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_25_151132) do
   create_table "bgl_events", force: :cascade do |t|
     t.integer "bgl_id", null: false
     t.integer "event_id", null: false
@@ -28,6 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_23_192817) do
 
   create_table "events", force: :cascade do |t|
     t.string "category"
+    t.string "comment"
   end
 
   create_table "users", force: :cascade do |t|

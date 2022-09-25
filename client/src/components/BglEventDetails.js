@@ -32,11 +32,19 @@ const EventDetails = () => {
 		<div>
 			<h2>{bgl.value}</h2>
 			<h2>{bgl.created_at}</h2>
-
-			<h3>Event Details:</h3>
+			<section>
+				<h3>Event Details:</h3>
+				{bgl.events.map((event)=> (
+					<p>{event.category}</p>
+				))}
+			</section>
 			
-			<button>Edit</button>
-			<button>Save</button>
+			
+			<div>
+				<button>Edit</button>
+				<button>Save</button>
+			</div>
+
 		</div>
 	)
 }
