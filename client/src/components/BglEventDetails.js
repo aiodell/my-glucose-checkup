@@ -23,7 +23,8 @@ const EventDetails = () => {
 		})
 	}, [id])
 
-	console.log(bgl.events)
+	console.log(bgl)
+	console.log(status)
 
 	if(status === "pending") return <h1>Gathering your data...</h1>
 	if(status === "rejected") return <h1>Error: {error.error}</h1>
@@ -34,12 +35,7 @@ const EventDetails = () => {
 			<h2>{bgl.created_at}</h2>
 			<section>
 				<h3>Event Details:</h3>
-				{bgl.events.map((event)=> (
-					<p>{event.category}</p>
-				))}
 			</section>
-			
-			
 			<div>
 				<button>Edit</button>
 				<button>Save</button>
