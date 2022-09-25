@@ -7,6 +7,7 @@ import Dashboard from "./components/Dashboard"
 import AllReadings from "./components/AllReadings"
 import NewReading from "./components/NewReading"
 import Home from "./components/Home"
+import BglEventDetails from "./components/BglEventDetails"
 import './styles.css';
 
 const App = () => {
@@ -25,9 +26,7 @@ const App = () => {
     })
   }, [])
 
-  const addNewReading = (newReading) => {
-		setReadings(readings => [...readings, newReading])
-	}
+  const addNewReading = (newReading) => {setReadings(readings => [...readings, newReading])}
  
   const updateUser = (user) => setCurrentUser(user)
   
@@ -45,18 +44,25 @@ const App = () => {
         <Signup />
       </Route>
       <Route exact path = "/dashboard">
-        <Dashboard currentUser = {currentUser}/>
+        <Dashboard 
+        currentUser = {currentUser}
+        readings = {readings}
+        setReadings = {setReadings}
+        />
       </Route>
       <Route exact path= "/bgls/all">
         <AllReadings
         readings = {readings}
-        setReadings = {setReadings}/>
+        setReadings = {setReadings}
+        />
       </Route>
       <Route exact path= "/bgls/new">
         <NewReading
-          currentUser = {currentUser}
           addNewReading = {addNewReading}
         />
+      </Route>
+      <Route exact path= "/bgls/:id">
+        <BglEventDetails />
       </Route>
       <Route exact path ="/">
         <Home />

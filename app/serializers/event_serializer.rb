@@ -1,3 +1,3 @@
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :comment, :category, :range
+  attributes :id, :category
 end
