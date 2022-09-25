@@ -27,7 +27,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_23_192817) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.string "comment"
     t.string "category"
   end
 

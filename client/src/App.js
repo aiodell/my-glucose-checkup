@@ -7,7 +7,7 @@ import Dashboard from "./components/Dashboard"
 import AllReadings from "./components/AllReadings"
 import NewReading from "./components/NewReading"
 import Home from "./components/Home"
-import EventDetails from "./components/EventDetails"
+import BglEventDetails from "./components/BglEventDetails"
 import './styles.css';
 
 const App = () => {
@@ -60,11 +60,9 @@ const App = () => {
         <NewReading
           addNewReading = {addNewReading}
         />
-      <Route exact path= "/bgl/:id/">
-        <EventDetails 
-          
-        />
       </Route>
+      <Route exact path= "/bgls/:id">
+        <BglEventDetails />
       </Route>
       <Route exact path ="/">
         <Home />

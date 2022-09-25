@@ -6,8 +6,8 @@ class BglsController < ApplicationController
 	end
 
 	def show
-    	bgl = Bgl.find_by( user_id: session[:user_id], id: params[:id] )
-    	render json: bgl, status: :ok
+    	bgl = Bgl.find_by(user_id: session[:user_id], id: params[:id] )
+    	render json: bgl, serializer: AllBglEventsSerializer, status: :ok
   	end
 
 	def create
@@ -19,7 +19,7 @@ class BglsController < ApplicationController
 	private
 
 	def bgl_params
-		params.permit(:value)
+		params.permit(:value, :user_id)
 	end
 
 end

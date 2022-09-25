@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :events
   resources :bgls
   
@@ -7,5 +8,6 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   post "/signup", to: "users#create"
   get "/auto-login", to: "users#show"
- 
+  get "/bgl_events", to: "bgl_events#index"
+
 end

@@ -1,13 +1,7 @@
 class EventsController < ApplicationController
 
 	def index
-		events = Event.where( user_id: session[:user_id] )
-    	render json: events, status: :ok
-	end
-
-	def show	  
-		event = Event.find_by( user_id: session[:user_id], id: params[:id] )
-		render json: event, status: :ok
+		Event.all
 	end
 
 	def create
@@ -25,7 +19,7 @@ class EventsController < ApplicationController
 	private
 
 	def event_params
-		params.permit(:category, :comment)
+		params.permit(:comment)
 	end
 
 

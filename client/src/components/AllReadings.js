@@ -6,6 +6,8 @@ const AllReadings = ({readings, setReadings}) => {
 	const [errors, setErrors] = useState([])
 	const history = useHistory()
 
+	
+
 	useEffect(() => {
 		fetch("/bgls")
 		.then(r => {
@@ -20,6 +22,7 @@ const AllReadings = ({readings, setReadings}) => {
 		})
 	}, [])
 
+
 	const renderReadings = readings.map((bgl) => {
 		return(
 			<Card body as= {Link} key= {bgl.id} to= {`/bgls/${bgl.id}`}>
@@ -30,6 +33,7 @@ const AllReadings = ({readings, setReadings}) => {
 			</Card>
 		)
 	})
+
 
 	// move to new reading page
 	const newReading = () => {
@@ -42,7 +46,7 @@ const AllReadings = ({readings, setReadings}) => {
 	}
 
 	return(
-		<>
+		<>	
 			<button onClick={newReading}>New Reading</button>
 			<button onClick={toDashboard}>Back to Dashboard</button>
 			{renderReadings}
