@@ -4,7 +4,6 @@ class BglEventsController < ApplicationController
 		render json: BglEvent.all.where( user_id: session[:user_id] ), status: :ok
 	end
 
-	
 	def create
 		bgl_event = BglEvent.create!(bgl_event_params)
 		render json: bgl_event.bgl, serializer: AllBglEventsSerializer, status: :created
