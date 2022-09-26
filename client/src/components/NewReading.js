@@ -26,7 +26,7 @@ const NewReading = ({addNewReading}) => {
 			if(r.ok){
 				r.json().then(newReading => {
 					addNewReading(newReading)
-					history.push("/bgls/all")
+					history.push("/dashboard")
 				})
 			}else {
 				r.json().then(data => {
@@ -37,8 +37,8 @@ const NewReading = ({addNewReading}) => {
 	}
 
 	// if cancelled, return to all readings
-	const toAllReadings = () => {
-		history.push("/bgls/all")
+	const toDashboard = () => {
+		history.push("/dashboard")
 	}
 
 	return(
@@ -49,7 +49,7 @@ const NewReading = ({addNewReading}) => {
 				<input type="text" name="value" placeholder="Enter value" onChange = {handleChange}/>
 				<div>
 					<button type="submit" value="submit">Submit</button>
-					<button type="button" value="cancel" onClick={toAllReadings}>Cancel</button>
+					<button type="button" value="cancel" onClick={toDashboard}>Cancel</button>
 				</div>
 			</form>
 		</div>
