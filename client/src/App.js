@@ -15,10 +15,8 @@ import './styles.css';
 const App = () => {
   const [currentUser, setCurrentUser] = useState("")
   const [readings, setReadings] = useState([])
+  const [events, setEvents] = useState([])
   const history = useHistory()
-
-  const CATEGORIES = ["fasting", "before meal", "after meal", "exercise", "other" ]
-  
   // push user to dashboard if already logged in
   useEffect( () => {
     fetch(`/auto-login`)
@@ -29,6 +27,12 @@ const App = () => {
       }
     })
   }, [])
+
+	useEffect(() => {
+		fetch("/events")
+		.then((r) => r.json())
+		.then(setEvents)
+	}, [])  
 
   const addNewReading = (newReading) => {setReadings(readings => [...readings, newReading])}
   const updateUser = (user) => setCurrentUser(user)
@@ -68,7 +72,7 @@ const App = () => {
         <BglEventDetails />
       </Route>
       <Route exact path="/bgls/:id/bgl_events/new">
-        <NewBglEvent categories = {CATEGORIES}/>
+        <NewBglEvent events = {events}/>
       </Route>
       <Route exact path ="/">
         <Home />
