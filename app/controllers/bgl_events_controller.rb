@@ -20,6 +20,12 @@ class BglEventsController < ApplicationController
 		render json: updated_event, status: :accepted
 	end
 
+	def destroy
+		bgl_event = BglEvent.find_by(id: params[:id])
+		bgl_event.destroy
+		head :no_content
+	end
+
 	private
 
 	def bgl_event_params

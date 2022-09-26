@@ -32,10 +32,14 @@ const App = () => {
 		fetch("/events")
 		.then((r) => r.json())
 		.then(setEvents)
-	}, [])  
+	}, []) 
 
   const addNewReading = (newReading) => {setReadings(readings => [...readings, newReading])}
   const updateUser = (user) => setCurrentUser(user)
+  
+  const deleteReading = (deletedReading) => {
+    setReadings((readings) => readings.filter((reading) => reading.id !== deletedReading))
+  }
 
   return (
    <div>
@@ -69,7 +73,7 @@ const App = () => {
         />
       </Route>
       <Route exact path= "/bgls/:id">
-        <BglEventDetails />
+        <BglEventDetails deleteReading = {deleteReading}/>
       </Route>
       <Route exact path="/bgls/:id/bgl_events/new">
         <NewBglEvent events = {events}/>

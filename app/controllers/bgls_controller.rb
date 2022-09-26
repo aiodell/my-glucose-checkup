@@ -16,6 +16,12 @@ class BglsController < ApplicationController
 		render json: @bgl, status: :created
 	end
 
+	def destroy
+		@bgl = Bgl.find_by(user_id: session[:user_id], id: params[:id] )
+		@bgl.destroy
+		head :no_content
+	end
+
 	private
 
 	def bgl_params

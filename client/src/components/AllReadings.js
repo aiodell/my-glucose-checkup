@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react"
-import { useHistory, Link } from "react-router-dom"
+import { useHistory, Link, useParams } from "react-router-dom"
 import Card from 'react-bootstrap/Card';
 
-const AllReadings = ({readings, setReadings}) => {
+const AllReadings = ({readings, setReadings }) => {
 	const [errors, setErrors] = useState([])
 	const history = useHistory()
+	const params = useParams()
 
 	useEffect(() => {
 		fetch("/bgls")
@@ -20,17 +21,30 @@ const AllReadings = ({readings, setReadings}) => {
 		})
 	}, [])
 
+	const handleDelete = (id) => {
+		fetch(`/bgls/${id}`, {
+			method: "DELETE",
+		})
+		.then(() =>{
+			setReadings((readings) => readings.filter((reading) => reading.id !== id))
+		})
+	}	
+	
+
 	const renderReadings = readings.map((bgl) => {
 		return(
-			<Card body as= {Link} key= {bgl.id} to= {`/bgls/${bgl.id}`}>
-				<p>
-					Value: {bgl.value} mg/dl <br/> 
-					Entered {bgl.created_at} 
-				</p>
-			</Card>
+			<div>
+				<Card body as= {Link} key= {bgl.id} to= {`/bgls/${bgl.id}`}>
+					<p>
+						Value: {bgl.value} mg/dl <br/> 
+						Entered {bgl.created_at} 
+					</p>
+				</Card>	
+				<button onClick={() => handleDelete(bgl.id)}>Delete</button>		
+			</div>
+
 		)
 	})
-
 
 	// move to new reading page
 	const newReading = () => {history.push("/bgls/new")}
