@@ -1,13 +1,13 @@
 class BglsController < ApplicationController
 
 	def index
-		bgls = Bgl.where( user_id: session[:user_id] )
-    	render json: bgls, status: :ok
+		@bgls = Bgl.where( user_id: session[:user_id] )
+    	render json: @bgls, status: :ok
 	end
 
 	def show
-    	bgl = Bgl.find_by(user_id: session[:user_id], id: params[:id] )
-    	render json: bgl, serializer: AllBglEventsSerializer, status: :ok
+    	@bgl = Bgl.find_by(user_id: session[:user_id], id: params[:id] )
+    	render json: @bgl, serializer: AllBglEventsSerializer, status: :ok
   	end
 
 	def create
