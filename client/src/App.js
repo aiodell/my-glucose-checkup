@@ -8,7 +8,8 @@ import AllReadings from "./components/AllReadings"
 import NewReading from "./components/NewReading"
 import Home from "./components/Home"
 import BglEventDetails from "./components/BglEventDetails"
-import EditEvent from "./components/EditBglEvent"
+import NewBglEvent from "./components/NewBglEvent"
+
 import './styles.css';
 
 const App = () => {
@@ -66,8 +67,8 @@ const App = () => {
       <Route exact path= "/bgls/:id">
         <BglEventDetails />
       </Route>
-      <Route exact path= "/bgl-events/:id/edit">
-        <EditEvent />
+      <Route exact path="/bgls/:id/bgl_events/new">
+        <NewBglEvent categories = {CATEGORIES}/>
       </Route>
       <Route exact path ="/">
         <Home />

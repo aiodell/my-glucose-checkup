@@ -39,12 +39,13 @@ const EventDetails = () => {
 				<h3>Event Details:</h3>
 				{bgl.events.map((event) => (
 					<p key= {event.id}>
-						<div>{event.category} <Link to={`/bgl-events/${event.id}/edit`}>edit event</Link></div>
+						<div>{event.category}</div>
+						<Link to={`/event/${event.id}`}>edit event</Link>
 					</p>
 				))}
 			</section>
 			<div>
-				<button>Save</button>
+				<Link to={`/bgls/${id}/bgl_events/new`}>add new event</Link>
 			</div>
 		</div>
 	)

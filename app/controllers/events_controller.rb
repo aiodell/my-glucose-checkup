@@ -5,7 +5,7 @@ class EventsController < ApplicationController
 	end
 
 	def show
-		event = Event.find_by(user_id: session[:user_id], id: params[:id])
+		@event = Event.find_by(user_id: session[:user_id], id: params[:id])
 		render json: event, status:ok
 	end
 
