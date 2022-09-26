@@ -8,13 +8,15 @@ import AllReadings from "./components/AllReadings"
 import NewReading from "./components/NewReading"
 import Home from "./components/Home"
 import BglEventDetails from "./components/BglEventDetails"
+import NewBglEvent from "./components/NewBglEvent"
+
 import './styles.css';
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState("")
   const [readings, setReadings] = useState([])
+  const [events, setEvents] = useState([])
   const history = useHistory()
-  
   // push user to dashboard if already logged in
   useEffect( () => {
     fetch(`/auto-login`)
@@ -26,10 +28,15 @@ const App = () => {
     })
   }, [])
 
+	useEffect(() => {
+		fetch("/events")
+		.then((r) => r.json())
+		.then(setEvents)
+	}, [])  
+
   const addNewReading = (newReading) => {setReadings(readings => [...readings, newReading])}
- 
   const updateUser = (user) => setCurrentUser(user)
-  
+
   return (
    <div>
     <NavBar 
@@ -63,6 +70,9 @@ const App = () => {
       </Route>
       <Route exact path= "/bgls/:id">
         <BglEventDetails />
+      </Route>
+      <Route exact path="/bgls/:id/bgl_events/new">
+        <NewBglEvent events = {events}/>
       </Route>
       <Route exact path ="/">
         <Home />

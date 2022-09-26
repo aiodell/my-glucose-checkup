@@ -5,14 +5,8 @@ class EventsController < ApplicationController
 	end
 
 	def show
-		event = find_event
+		@event = Event.find_by(user_id: session[:user_id], id: params[:id])
 		render json: event, status:ok
-	end
-
-	def update
-		event = find_event
-		event.update!(event_params)
-		render json: event, status: :accepted
 	end
 
 	private
@@ -22,7 +16,7 @@ class EventsController < ApplicationController
 	end
 
 	def find_event
-		EVent.find(params[:id])
+		Event.find(params[:id])
 	end
 
 
