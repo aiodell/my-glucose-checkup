@@ -1,6 +1,7 @@
 import {useState} from "react"
 
 const AddEventForm = ({addNewEvent}) => {
+	const[errors, setErrors] = useState([])
 	const[newEventData, setNewEventData] = useState({category: ""})
 	const {category} = newEventData
 
@@ -22,17 +23,23 @@ const AddEventForm = ({addNewEvent}) => {
 				r.json().then(newEvent => {
 					addNewEvent(newEvent)
 				})
+			}else{
+				r.json().then(data => {
+					setErrors(data.error)
+				})
 			}e.target.reset()
 		}) 
 	}	
 
 	return(
-		<form onSubmit={handleAddEvent}>
-			<label htmlFor="category">New Event Name</label>
-			<input type="text" name="category" onChange={handleChange}/>
-			<button type="submit">Add Event</button>
-		</form>
-
+		<div>
+			{errors ? errors.map(e => <section>{e}</section>):null}
+			<form onSubmit={handleAddEvent}>
+				<label htmlFor="category">New Event Name</label>
+				<input type="text" name="category" onChange={handleChange}/>
+				<button type="submit">Add Event</button>
+			</form>		
+		</div>
 	)
 }
 

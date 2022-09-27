@@ -1,12 +1,10 @@
 // can only be accessed by the admin
 import {useState} from "react"
-import { useHistory } from "react-router-dom"
 import AddEventForm from "./AddEventForm"
 
 const Events = ({events, setEvents, deleteEvent}) => {
 	const[showAddEventForm, setShowAddEventForm] = useState(false)
 	const[errors, setErrors] = useState([])
-	const history = useHistory()
 
 	const showAddForm = () => { setShowAddEventForm(current => !current)}
 	const addNewEvent = (newEvent) => {setEvents(events => [...events, newEvent])}
