@@ -9,6 +9,7 @@ import NewReading from "./components/NewReading"
 import Home from "./components/Home"
 import BglEventDetails from "./components/BglEventDetails"
 import NewBglEvent from "./components/NewBglEvent"
+import Events from "./components/Events"
 
 import './styles.css';
 
@@ -40,6 +41,15 @@ const App = () => {
   const deleteReading = (deletedReading) => {
     setReadings((readings) => readings.filter((reading) => reading.id !== deletedReading))
   }
+  
+  const deleteEvent = (deletedEvent) => {
+    setEvents((events) => events.filter((event) => event.id !== deletedEvent))
+  }
+
+  const updateBgl = (updatedBgl) => {
+    const newBgl = readings.map(bgl => bgl.id === updatedBgl.id ? updatedBgl : bgl)
+    setReadings(newBgl)
+  }
 
   return (
    <div>
@@ -68,17 +78,25 @@ const App = () => {
         />
       </Route>
       <Route exact path= "/bgls/new">
-        <NewReading
-          addNewReading = {addNewReading}
-        />
+        <NewReading addNewReading= {addNewReading} />
       </Route>
       <Route exact path= "/bgls/:id">
-        <BglEventDetails deleteReading = {deleteReading}/>
+        <BglEventDetails deleteReading= {deleteReading}/>
       </Route>
       <Route exact path="/bgls/:id/bgl_events/new">
-        <NewBglEvent events = {events}/>
+        <NewBglEvent events= {events}/>
       </Route>
-      <Route exact path ="/">
+      <Route exact path= "/bgl/:id/update">
+
+      </Route>
+      <Route exact path="/events">
+        <Events 
+          events = {events}
+          setEvents = {setEvents}
+          deleteEvent = {deleteEvent}
+        />
+      </Route>
+      <Route exact path="/">
         <Home />
       </Route>
     </Switch>

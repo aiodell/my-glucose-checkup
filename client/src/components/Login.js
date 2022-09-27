@@ -37,7 +37,6 @@ const Login = ({updateUser}) => {
 		})
 	}
 
-	
 	return(
 	<div>
 		<h2>Login</h2>

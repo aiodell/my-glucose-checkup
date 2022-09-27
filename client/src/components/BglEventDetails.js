@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useParams, useHistory, Link } from "react-router-dom"
 
-const EventDetails = ({deleteReading}) => {
+const BglEventDetails = ({deleteReading}) => {
 	const history = useHistory()
 	const [{data: bgl, error, status}, setBgl] = useState({
 		data: null,
@@ -29,8 +29,8 @@ const EventDetails = ({deleteReading}) => {
 
 	// return tp dashboard
 	const toDashboard = () => {history.push("/dashboard")}
+	const toBglUpdateForm = () => {history.push(`/bgl/${params.id}/update`)}
 
-	
 	const handleDelete = () => {
 		fetch(`/bgls/${params.id}`, {
 			method: "DELETE",
@@ -51,7 +51,6 @@ const EventDetails = ({deleteReading}) => {
 				{bgl.events.map((event) => (
 					<div key= {event.id}>
 						<p>{event.category} <br/>
-						<Link to={`/events/${event.id}/bgl_events/edit`}>edit event</Link>
 						</p>
 					</div>
 				))}
@@ -59,9 +58,10 @@ const EventDetails = ({deleteReading}) => {
 			<div>
 				<Link to={`/bgls/${params.id}/bgl_events/new`}>add new event</Link>
 				<button onClick = {handleDelete}>Delete</button>
+				<button onClick= {toBglUpdateForm}>Edit Value</button>
 			</div>
 		</div>
 	)
 }
 
-export default EventDetails
+export default BglEventDetails
