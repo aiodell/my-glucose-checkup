@@ -31,7 +31,7 @@ const NewBglEvent = ({events}) => {
 			if(r.ok) {
 				history.push(`/bgls/${id}`)
 			} else {
-				r.json().then((data) => setErrors(data.errors))
+				r.json().then((data) => setErrors(data.error))
 			}
 		})
 	}
@@ -41,6 +41,7 @@ const NewBglEvent = ({events}) => {
 			<h3>Add new event for BGL {bgl.value}<br/>
 				added: {bgl.created_at}
 			</h3>
+			{errors ? errors.map(e => <section>{e}</section>):null}
 			<form onSubmit={handleSubmit}>
 				<label htmlFor="event_id">New Event</label>
 				<select onChange ={(e) => {

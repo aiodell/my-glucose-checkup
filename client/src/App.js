@@ -10,21 +10,19 @@ import Home from "./components/Home"
 import BglEventDetails from "./components/BglEventDetails"
 import NewBglEvent from "./components/NewBglEvent"
 import Events from "./components/Events"
-
 import './styles.css';
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState("")
   const [readings, setReadings] = useState([])
   const [events, setEvents] = useState([])
-  const history = useHistory()
-  // push user to dashboard if already logged in
+  
+  
   useEffect( () => {
     fetch(`/auto-login`)
     .then((r) => {
       if (r.ok) {
         r.json().then((user) => setCurrentUser(user))
-        history.push("/dashboard")
       }
     })
   }, [])
@@ -47,7 +45,7 @@ const App = () => {
   }
 
   const updateBgl = (updatedBgl) => {
-    const newBgl = readings.map(bgl => bgl.id === updatedBgl.id ? updatedBgl : bgl)
+    const newBgl = readings.filter(bgl => bgl.id === updatedBgl.id ? updatedBgl : bgl)
     setReadings(newBgl)
   }
 
@@ -80,24 +78,26 @@ const App = () => {
       <Route exact path= "/bgls/new">
         <NewReading addNewReading= {addNewReading} />
       </Route>
-      <Route exact path= "/bgls/:id">
-        <BglEventDetails deleteReading= {deleteReading}/>
+      <Route exact path= "/bgls/:id/">
+        <BglEventDetails 
+          updateBgl = {updateBgl}
+          deleteReading= {deleteReading}
+        />
       </Route>
       <Route exact path="/bgls/:id/bgl_events/new">
         <NewBglEvent events= {events}/>
       </Route>
-      <Route exact path= "/bgl/:id/update">
-
-      </Route>
       <Route exact path="/events">
         <Events 
+          deleteEvent = {deleteEvent}
           events = {events}
           setEvents = {setEvents}
-          deleteEvent = {deleteEvent}
         />
       </Route>
       <Route exact path="/">
-        <Home />
+        <Home 
+        currentUser = {currentUser}
+        setCurrentUser = {setCurrentUser}/>
       </Route>
     </Switch>
    </div>

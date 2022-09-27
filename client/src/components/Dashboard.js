@@ -12,7 +12,7 @@ const Dashboard = ({readings, setReadings, currentUser}) => {
 				r.json().then(data => setReadings(data))
 			}else{
 				r.json().then(data => {
-					setErrors(data.error)
+					setErrors(data.errors)
 					history.push("/login")
 				})
 			}
@@ -66,7 +66,6 @@ const Dashboard = ({readings, setReadings, currentUser}) => {
 		<div>
 			<div>
 				<h1>Welcome to your dashboard, {currentUser.first_name} </h1>
-
 				{currentUser.admin ? 
 					<div>
 						<h3>You are in admin mode</h3>

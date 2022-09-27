@@ -30,7 +30,7 @@ const NewReading = ({addNewReading}) => {
 				})
 			}else {
 				r.json().then(data => {
-					setErrors(data.errors)
+					setErrors(data.error)
 				})
 			}
 		})
@@ -44,6 +44,7 @@ const NewReading = ({addNewReading}) => {
 	return(
 		<div>
 			<h2>New Reading</h2>
+			{errors ? errors.map(e => <section>{e}</section>):null}
 			<form onSubmit={onSubmit}>
 				<label htmlFor="value">Enter BGL</label>
 				<input type="text" name="value" placeholder="Enter value" onChange= {handleChange}/>

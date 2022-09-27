@@ -17,9 +17,9 @@ class BglsController < ApplicationController
 	end
 	
 	def update
-		user = @current_user
-		@bgl = user.bgls.update!(bgl_params)
-		render json: @bgl, status: :accepted
+		bgl =  Bgl.find_by(user_id: session[:user_id], id: params[:id] )
+		bgl.update!(bgl_params)
+		render json: bgl, status: :accepted
 	end
 
 	def destroy
