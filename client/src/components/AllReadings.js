@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react"
-import { useHistory, Link, useParams } from "react-router-dom"
+import { useHistory, Link } from "react-router-dom"
 import Card from 'react-bootstrap/Card';
 
 const AllReadings = ({readings, setReadings }) => {
 	const [errors, setErrors] = useState([])
 	const history = useHistory()
-	const params = useParams()
 
 	useEffect(() => {
 		fetch("/bgls")
@@ -30,7 +29,6 @@ const AllReadings = ({readings, setReadings }) => {
 		})
 	}	
 	
-
 	const renderReadings = readings.map((bgl) => {
 		return(
 			<div>

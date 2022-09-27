@@ -15,6 +15,12 @@ class BglsController < ApplicationController
 		@bgl = user.bgls.create!(bgl_params)
 		render json: @bgl, status: :created
 	end
+	
+	def update
+		user = @current_user
+		@bgl = user.bgls.update!(bgl_params)
+		render json: @bgl, status: :accepted
+	end
 
 	def destroy
 		@bgl = Bgl.find_by(user_id: session[:user_id], id: params[:id] )

@@ -26,8 +26,8 @@ class ApplicationController < ActionController::API
   end
 
   # admin privledges
-  # def is_authorized? 
-  #     permitted = current_user.admin? # going true or false based on teh admin attribute of our current user 
-  #     render json: {errors: {User: "does not have admin permission"}}, status: :forbidden unless permitted
-  # end
+  def is_authorized? 
+      permitted = current_user.admin? # going true or false based on teh admin attribute of our current user 
+      render json: {errors: {User: "does not have admin permission"}}, status: :forbidden unless permitted
+  end
 end

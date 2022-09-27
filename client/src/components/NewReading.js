@@ -4,9 +4,7 @@ import {useHistory} from "react-router-dom"
 const NewReading = ({addNewReading}) => {
 	const[errors, setErrors] = useState([])
 	const history = useHistory()
-	const[readingData, setReadingData] = useState({
-		value: ""
-	})
+	const[readingData, setReadingData] = useState({value: ""})
 
 	const {value} = readingData
 
@@ -19,7 +17,9 @@ const NewReading = ({addNewReading}) => {
 
 		fetch(`/bgls`, {
 			method:"POST",
-			headers: {"Content-Type": "application/json"},
+			headers: {
+				"Content-Type": "application/json"
+			},
 			body:JSON.stringify(reading)
 		})
 		.then(r => {
@@ -46,7 +46,7 @@ const NewReading = ({addNewReading}) => {
 			<h2>New Reading</h2>
 			<form onSubmit={onSubmit}>
 				<label htmlFor="value">Enter BGL</label>
-				<input type="text" name="value" placeholder="Enter value" onChange = {handleChange}/>
+				<input type="text" name="value" placeholder="Enter value" onChange= {handleChange}/>
 				<div>
 					<button type="submit" value="submit">Submit</button>
 					<button type="button" value="cancel" onClick={toDashboard}>Cancel</button>

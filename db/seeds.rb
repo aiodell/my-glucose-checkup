@@ -14,7 +14,8 @@ User.create([
 		username: Faker::Internet.username,
 		email: Faker::Internet.safe_email,
 		password: "123",
-		password_confirmation:"123"
+		password_confirmation:"123",
+		admin: false
 	},
 	{
 		first_name: Faker::Name.first_name,
@@ -22,7 +23,8 @@ User.create([
 		username: Faker::Internet.username,
 		email: Faker::Internet.safe_email,
 		password: "123",
-		password_confirmation:"123"		
+		password_confirmation:"123",
+		admin: false
 	},
 	{
 		first_name: Faker::Name.first_name,
@@ -30,7 +32,8 @@ User.create([
 		username: Faker::Internet.username,
 		email: Faker::Internet.safe_email,
 		password: "123",
-		password_confirmation:"123"			
+		password_confirmation:"123",
+		admin: false		
 	}
 ])
 
