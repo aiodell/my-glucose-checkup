@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import {useParams, useHistory } from "react-router-dom"
+import {useParams } from "react-router-dom"
 
 const BglUpdateForm = ({updateBgl}) => {
 	const [errors, setErrors] = useState([])
