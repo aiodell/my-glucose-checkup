@@ -22,10 +22,11 @@ const NavBar = ({updateUser, currentUser}) => {
 		<Navbar bg="dark" variant="dark" expand="lg">
 		{currentUser ? 
 			<Container className="nav-bar">
-				<Navbar.Brand>My Glucose Checkup</Navbar.Brand>	
+				<Navbar.Brand>My Glucose Checkup</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav"></Navbar.Collapse>
 					<Nav className="me-auto">
+						
 						<Nav.Link href="/dashboard">Dashboard</Nav.Link>
 						<Nav.Link href="/bgls/all">My BGLs</Nav.Link>
 						<Nav.Link href="/bgls/new">New Reading</Nav.Link>

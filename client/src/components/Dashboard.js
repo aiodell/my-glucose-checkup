@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react"
 import {useHistory, Link } from "react-router-dom"
+import Container from "react-bootstrap/Container"
+import Button from "react-bootstrap/Button"
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 const Dashboard = ({readings, setReadings, currentUser}) => {
 	const[errors, setErrors] = useState([])
@@ -31,72 +35,78 @@ const Dashboard = ({readings, setReadings, currentUser}) => {
 		}, 0)
 	}
 
-	const renderAverage = average(readings)
+	const renderAverage = parseInt(average(readings))
 
 	const renderLowest = lowestValue.slice(0,1).map((num) => {
 		return(
 			<h2 key={num.id}>
-				Lowest Reading: {num.value}
+				Lowest: {num.value}
 			</h2>
 		)	
 	})
 
 	const renderHighest = highestValue.slice(0,1).map((num)=> {
 		return(
-			<h2 key={num.id}>
-				Highest Reading: {num.value}
-			</h2>
+				<h2 key={num.id}>
+					Highest: {num.value}
+				</h2>
 		)
 	})
 
 	const renderCurrent = highestId.slice(0,1).map((num) => {
 		return(
-		<div>
-			<h1 key={num.id}> {num.value} </h1>
-			<Link to= {`/bgls/${num.id}`}> View Details</Link>
-		</div>
+		<>
+			<div className="current-bgl">
+				<h1 className="current-txt" key={num.id}> {num.value} </h1>
+			</div>
+			<Link to= {`/bgls/${num.id}`} className="small-link"> View Details</Link>
+		</>
 		)
 	})
  
-	const toReadings = () => {history.push("/bgls/all")}
-	const newReading = () => {history.push("/bgls/new")}
-	const toEvents = () => {history.push("/events")}
-
 	return(
-		<div>
-			<div>
-				<h1>Welcome to your dashboard, {currentUser.first_name} </h1>
+		<Container className="container-style">	
+			<Container className="dash-container">
+				<h1 className="dash-title">
+					Welcome to your dashboard, {currentUser.first_name} 
+				</h1>	
 				{currentUser.admin ? 
-					<div>
-						<h3>You are in admin mode</h3>
-						<div>
+				<>
+					<Row>
+						<p>You are in admin mode</p>
 							{renderCurrent}
-						</div>
+					</Row> 
+						<Row className="low-high-avg">
+							<Col>{renderLowest}</Col>
+							<Col>
+								<h2>Average: {renderAverage}</h2>
+							</Col>
+							<Col>{renderHighest}</Col>
+						</Row>
 						<div>
-							{renderLowest}
-							{renderHighest}
-							<h2>Average Reading: {renderAverage}</h2>
+							<Button className="btns" href="/events">All Events</Button>
+							<Button className="btns" href="/bgls/all">All Test Readings</Button>
+							<Button className="btns" href="bgls/new">New Test Reading</Button>						
 						</div>					
-						<button onClick={toEvents}>All Events</button>
-						<button onClick={toReadings}>All Test Readings</button>
-						<button onClick={newReading}>New Test Reading</button>
-					</div> 
-				:
-				<div>
-					<div>
+				</> :
+				<>
+					<Row>
 						{renderCurrent}
-					</div>
-					<div>
-						{renderLowest}
-						{renderHighest}
-					</div>
-					<>
-						<button onClick={toReadings}>All Readings</button>
-						<button onClick={newReading}>New Reading</button>
-					</> 
-				</div> }
-			</div>
-		</div>
+					</Row> 
+						<Row className="low-high-avg">
+							<Col>{renderLowest}</Col>
+							<Col>
+								<h2>Average: {renderAverage}</h2>
+							</Col>
+							<Col>{renderHighest}</Col>
+						</Row>
+						<div>
+							<Button className="btns" href="/bgls/all">All Readings</Button>
+							<Button className="btns" href="bgls/new">New Reading</Button>						
+						</div>					
+				</> }
+			</Container>
+		</Container>
 			
 	)
 }

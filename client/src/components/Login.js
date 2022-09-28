@@ -35,7 +35,7 @@ const Login = ({updateUser}) => {
 	}
 
 	return(
-	<Container className="form-style">
+	<Container className="container-style">
 		<h2 className="title">Login</h2>
 			{errors ? errors.map(e => <section>{e}</section>):null}
 			<Form onSubmit={handleLogin}>
