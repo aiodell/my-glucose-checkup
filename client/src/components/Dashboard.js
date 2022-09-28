@@ -66,6 +66,7 @@ const Dashboard = ({readings, setReadings, currentUser}) => {
  
 	return(
 		<Container className="container-style">	
+			{errors ? errors.map(e => <section>{e}</section>):null}
 			<Container className="dash-container">
 				<h1 className="dash-title">
 					Welcome to your dashboard, {currentUser.first_name} 
