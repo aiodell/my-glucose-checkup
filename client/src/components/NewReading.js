@@ -1,5 +1,8 @@
 import {useState} from "react"
 import {useHistory} from "react-router-dom"
+import Container from "react-bootstrap/Container"
+import Button from "react-bootstrap/Button"
+import Form from 'react-bootstrap/Form';
 
 const NewReading = ({addNewReading}) => {
 	const[errors, setErrors] = useState([])
@@ -8,8 +11,6 @@ const NewReading = ({addNewReading}) => {
 
 	const {value} = readingData
 
-	const handleChange = (e) => {setReadingData({...readingData, [e.target.name]: e.target.value})}
-	
 	const onSubmit = (e) => {
 		e.preventDefault()
 		
@@ -36,23 +37,20 @@ const NewReading = ({addNewReading}) => {
 		})
 	}
 
-	// if cancelled, return to all readings
-	const toDashboard = () => {
-		history.push("/dashboard")
-	}
-
 	return(
 		<div>
-			<h2>New Reading</h2>
+			<h2 className="title">New Reading</h2>
 			{errors ? errors.map(e => <section>{e}</section>):null}
-			<form onSubmit={onSubmit}>
-				<label htmlFor="value">Enter BGL</label>
-				<input type="text" name="value" placeholder="Enter value" onChange= {handleChange}/>
+			<Form onSubmit={onSubmit}>
+				<Form.Group className="mb=3" controlId="value">
+					<Form.Label>Enter BGL</Form.Label>
+					<Form.Control type="text" placeholder="Enter value" onChange= {(e) => setReadingData(e.target.value)}/>				
+				</Form.Group>
 				<div>
-					<button type="submit" value="submit">Submit</button>
-					<button type="button" value="cancel" onClick={toDashboard}>Cancel</button>
+					<Button className="btns" type="submit" value="submit">Submit</Button>
+					<Button className="btns" type="button" value="cancel" href="/dashboard">Cancel</Button>
 				</div>
-			</form>
+			</Form>
 		</div>
 	)
 }

@@ -17,7 +17,6 @@ const App = () => {
   const [readings, setReadings] = useState([])
   const [events, setEvents] = useState([])
   
-  
   useEffect( () => {
     fetch(`/auto-login`)
     .then((r) => {

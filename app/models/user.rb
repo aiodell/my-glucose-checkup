@@ -7,8 +7,8 @@ class User < ApplicationRecord
     UserMailer.welcome_email(self).deliver_now  
   end
 
-  validates :username, :email, presence: true, uniqueness: true
-  validates :first_name, :last_name, presence: true
-  validates :password, confirmation: true, uniqueness: {case_sensitive: true},  length: {minimum: 8}
-  validates :password_confirmation, presence: true
+  # validates :username, :email, presence: true, uniqueness: true
+  # validates :first_name, :last_name, presence: true
+  # validates :password, confirmation: true, uniqueness: {case_sensitive: true},  length: {minimum: 8}
+  # validates :password_confirmation, presence: true
 end

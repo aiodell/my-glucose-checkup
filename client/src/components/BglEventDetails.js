@@ -29,8 +29,6 @@ const BglEventDetails = ({deleteReading, updateBgl}) => {
 	if(status === "pending") return <h1>Gathering your data...</h1>
 	if(status === "rejected") return <h1>Error: {error.error}</h1>
 
-	// return tp dashboard
-	const toDashboard = () => {history.push("/dashboard")}
 	const showUpdateForm = () => { setShowForm(current => !current)}
 
 	const handleDelete = () => {
@@ -45,7 +43,6 @@ const BglEventDetails = ({deleteReading, updateBgl}) => {
 
 	return(
 		<div>
-			<button onClick={toDashboard}>To Dashboard</button>
 			<h2>{bgl.value}</h2>
 			<h2>{bgl.created_at}</h2>
 			<section>
