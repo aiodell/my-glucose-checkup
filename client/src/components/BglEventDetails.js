@@ -13,10 +13,10 @@ const BglEventDetails = ({deleteReading, updateBgl}) => {
 		error: null,
 		status: "pending"
 	})
-	const params = useParams()
+	const {id} = useParams()
 
 	useEffect(() => {
-		fetch(`/bgls/${params.id}`).then((r) => {
+		fetch(`/bgls/${id}`).then((r) => {
 			if(r.ok){
 				r.json().then((bgl) =>
 				setBgl({data: bgl, error: null, status: "resolved"})
@@ -35,11 +35,11 @@ const BglEventDetails = ({deleteReading, updateBgl}) => {
 	const showUpdateForm = () => { setShowForm(current => !current)}
 
 	const handleDelete = () => {
-		fetch(`/bgls/${params.id}`, {
+		fetch(`/bgls/${id}`, {
 			method: "DELETE",
 		})
 		.then(() =>{
-			deleteReading(params.id)
+			deleteReading(id)
 			history.push('/dashboard')
 		})
 	}
@@ -65,7 +65,7 @@ const BglEventDetails = ({deleteReading, updateBgl}) => {
 						))}
 					</div>				
 					<div>
-						<NavLink to={`/bgls/${params.id}/bgl_events/new`}>
+						<NavLink to={`/bgls/${id}/bgl_events/new`}>
 							add new event
 						</NavLink>
 					</div>
