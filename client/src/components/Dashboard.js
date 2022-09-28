@@ -39,17 +39,20 @@ const Dashboard = ({readings, setReadings, currentUser}) => {
 
 	const renderLowest = lowestValue.slice(0,1).map((num) => {
 		return(
-			<h2 key={num.id}>
-				Lowest: {num.value}
-			</h2>
+			<div>
+				<h2 key={num.id}> Lowest: {num.value}</h2>
+			<Link to= {`/bgls/${num.id}`} className="small-link"> View Details</Link>
+			</div>
 		)	
 	})
 
 	const renderHighest = highestValue.slice(0,1).map((num)=> {
 		return(
-				<h2 key={num.id}>
-					Highest: {num.value}
-				</h2>
+			<div>
+				<h2 key={num.id}> Highest: {num.value}</h2>
+				<Link to= {`/bgls/${num.id}`} className="small-link"> View Details</Link>
+			</div>
+
 		)
 	})
 
