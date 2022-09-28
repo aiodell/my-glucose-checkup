@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	skip_before_action :authenticate_user
+	
 	# /POST create new user
 	def create
 		@user = User.create!(user_params)
@@ -7,7 +8,7 @@ class UsersController < ApplicationController
 			session[:user] = @user.id
 			render json: @user, status: :created
 		else
-			render json: { errors: ["Invalid email or password"]}, status: :unprocessable_entity
+			render json: { errors: ["Invalid username or password"]}, status: :unprocessable_entity
 		end
     end
 

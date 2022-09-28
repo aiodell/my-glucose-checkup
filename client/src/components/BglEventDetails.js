@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useParams, useHistory } from "react-router-dom"
+import { useParams, useHistory, NavLink } from "react-router-dom"
 import BglUpdateForm from "./BglUpdateForm"
 import Container from "react-bootstrap/Container"
 import Button from "react-bootstrap/Button"
@@ -13,10 +13,10 @@ const BglEventDetails = ({deleteReading, updateBgl}) => {
 		error: null,
 		status: "pending"
 	})
-	const params = useParams()
+	const {id} = useParams()
 
 	useEffect(() => {
-		fetch(`/bgls/${params.id}`).then((r) => {
+		fetch(`/bgls/${id}`).then((r) => {
 			if(r.ok){
 				r.json().then((bgl) =>
 				setBgl({data: bgl, error: null, status: "resolved"})
@@ -35,11 +35,11 @@ const BglEventDetails = ({deleteReading, updateBgl}) => {
 	const showUpdateForm = () => { setShowForm(current => !current)}
 
 	const handleDelete = () => {
-		fetch(`/bgls/${params.id}`, {
+		fetch(`/bgls/${id}`, {
 			method: "DELETE",
 		})
 		.then(() =>{
-			deleteReading(params.id)
+			deleteReading(id)
 			history.push('/dashboard')
 		})
 	}
@@ -65,16 +65,15 @@ const BglEventDetails = ({deleteReading, updateBgl}) => {
 						))}
 					</div>				
 					<div>
-						<Card.Link href={`/bgls/${params.id}/bgl_events/new`}>
+						<NavLink to={`/bgls/${id}/bgl_events/new`}>
 							add new event
-						</Card.Link>
+						</NavLink>
 					</div>
 				</Card.Body>
-			</Card>
-			
-			<div>
 				<Button className="btns" onClick = {handleDelete}>Delete</Button>
 				<Button className="btns" onClick= {showUpdateForm}>Edit Value</Button>
+			</Card>
+			<div>
 				{showForm ? 
 					<BglUpdateForm 
 						bgl= {bgl} 
