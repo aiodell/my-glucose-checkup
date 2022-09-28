@@ -16,8 +16,8 @@ const NewBglEvent = ({events}) => {
 		fetch(`/bgls/${id}`)
 		.then((r)=>r.json())
 		.then(setBgl)
-	}, [])
-	
+	}, [id])
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const formData = {
@@ -34,7 +34,7 @@ const NewBglEvent = ({events}) => {
 			if(r.ok) {
 				history.push(`/bgls/${id}`)
 			} else {
-				r.json().then((data) => setErrors(data.error))
+				r.json().then((data) => setErrors(data.errors))
 			}
 		})
 	}

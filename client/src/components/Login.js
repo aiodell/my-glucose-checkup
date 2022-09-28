@@ -29,7 +29,7 @@ const Login = ({updateUser}) => {
 						history.push(`/dashboard`)
 					})
 			}else {
-					r.json().then(json => setErrors(json.errors))
+					r.json().then(data => setErrors(data.errors))
 			}
 		})
 	}

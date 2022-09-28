@@ -29,12 +29,12 @@ const NewReading = ({addNewReading}) => {
 				})
 			}else {
 				r.json().then(data => {
-					setErrors(data.error)
+					setErrors(data.errors)
 				})
 			}
 		})
 	}
-
+	console.log(value)
 	return(
 		<Container className="container-style">
 			<h2 className="title">New Reading</h2>

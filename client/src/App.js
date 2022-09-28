@@ -30,7 +30,13 @@ const App = () => {
 		fetch("/events")
 		.then((r) => r.json())
 		.then(setEvents)
-	}, []) 
+	}, [])
+
+  useEffect(() => {
+		fetch("/bgls")
+		.then((r) => r.json())
+		.then(setReadings)
+	}, [])  
 
   const addNewReading = (newReading) => {setReadings(readings => [...readings, newReading])}
   const updateUser = (user) => setCurrentUser(user)
@@ -44,8 +50,9 @@ const App = () => {
   }
 
   const updateBgl = (updatedBgl) => {
-    const newBgl = readings.filter(bgl => bgl.id === updatedBgl.id ? updatedBgl : bgl)
-    setReadings(newBgl)
+    // const newBgl = 
+    setReadings((readings) => readings.map(bgl => bgl.id === updatedBgl.id ? updatedBgl : bgl))
+    console.log(readings)
   }
 
   return (
@@ -81,6 +88,7 @@ const App = () => {
         <BglEventDetails 
           updateBgl = {updateBgl}
           deleteReading= {deleteReading}
+          readings = {readings}
         />
       </Route>
       <Route exact path="/bgls/:id/bgl_events/new">
