@@ -4,7 +4,7 @@ import bloodtest from '../bloodtest.jpg'
 import {NavLink} from "react-router-dom"
 import '../styles.css';
 // main display when a user enters the page
-const Home = () => {
+const Home = ({currentUser}) => {
   
 	return (
     <Container className="Home">
@@ -12,14 +12,14 @@ const Home = () => {
           <h1 className="welcome">
             Welcome to My Glucose Check-Up
           </h1>
-          <div className="home-btn-div">
+         {currentUser ? null :  <div className="home-btn-div">
             <NavLink to= "/signup">
               <Button className="btns" >Sign Up</Button>
             </NavLink>
             <NavLink to="/login">
               <Button className="btns" >Login</Button>
             </NavLink>
-          </div>
+          </div>}
       </header>
     </Container>
   )

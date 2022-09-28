@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 import NavBar from "./components/NavBar"
 import Login from "./components/Login"
 import Signup from "./components/Signup"
@@ -16,12 +16,15 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState("")
   const [readings, setReadings] = useState([])
   const [events, setEvents] = useState([])
-  
+  const history = useHistory()
+
   useEffect( () => {
     fetch(`/auto-login`)
     .then((r) => {
       if (r.ok) {
         r.json().then((user) => setCurrentUser(user))
+      }else{
+        history.push("/login")
       }
     })
   }, [])
