@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-	skip_before_action :authenticate_user, except: [:create, :destroy]
 
 	def index
 		render json: Event.all

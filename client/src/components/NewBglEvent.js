@@ -41,10 +41,10 @@ const NewBglEvent = ({events}) => {
 
 	return(
 		<Container className="container-style">
+		{errors ? errors.map(e => <section>{e}</section>):null}
 			<h3 className= "title">Add new event for BGL {bgl.value}<br/>
 				{bgl.created_at}
 			</h3>
-			{errors ? errors.map(e => <section>{e}</section>):null}
 			<Form onSubmit={handleSubmit}>
 				<Form.Select size="lg" onChange ={(e) => {
 					setEventId(e.target.value)

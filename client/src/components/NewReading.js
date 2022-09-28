@@ -1,5 +1,5 @@
 import {useState} from "react"
-import {useHistory} from "react-router-dom"
+import {useHistory, NavLink} from "react-router-dom"
 import Container from "react-bootstrap/Container"
 import Button from "react-bootstrap/Button"
 import Form from 'react-bootstrap/Form';
@@ -46,7 +46,9 @@ const NewReading = ({addNewReading}) => {
 				</Form.Group>
 				<div>
 					<Button className="btns" type="submit" value="submit">Submit</Button>
-					<Button className="btns" type="button" value="cancel" href="/dashboard">Cancel</Button>
+				<NavLink to="/dashboard">
+					<Button className="btns" type="button" value="cancel">Cancel</Button>
+				</NavLink>
 				</div>
 			</Form>
 		</Container>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import {useHistory, Link } from "react-router-dom"
+import {useHistory, Link, NavLink } from "react-router-dom"
 import Container from "react-bootstrap/Container"
 import Button from "react-bootstrap/Button"
 import Col from 'react-bootstrap/Col';
@@ -88,9 +88,15 @@ const Dashboard = ({readings, setReadings, currentUser}) => {
 							<Col>{renderHighest}</Col>
 						</Row>
 						<div>
-							<Button className="btns" href="/events">All Events</Button>
-							<Button className="btns" href="/bgls/all">All Test Readings</Button>
-							<Button className="btns" href="bgls/new">New Test Reading</Button>						
+							<NavLink to="/events">
+								<Button className="btns" >All Events</Button>
+							</NavLink>
+							<NavLink to="/bgls/all">
+								<Button className="btns">All Test Readings</Button>
+							</NavLink>
+							<NavLink to="/bgls/new">
+								<Button className="btns">New Test Reading</Button>
+							</NavLink>						
 						</div>					
 				</> :
 				<>
@@ -105,8 +111,12 @@ const Dashboard = ({readings, setReadings, currentUser}) => {
 							<Col>{renderHighest}</Col>
 						</Row>
 						<div>
-							<Button className="btns" href="/bgls/all">All Readings</Button>
-							<Button className="btns" href="bgls/new">New Reading</Button>						
+							<NavLink to="/bgls/all">
+								<Button className="btns">All Test Readings</Button>
+							</NavLink>
+							<NavLink to="/bgls/new">
+								<Button className="btns">New Test Reading</Button>
+							</NavLink>								
 						</div>					
 				</> }
 			</Container>

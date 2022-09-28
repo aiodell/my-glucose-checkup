@@ -1,4 +1,4 @@
-import { useHistory } from 'react-router-dom'
+import { useHistory, NavLink } from 'react-router-dom'
 import Container from "react-bootstrap/Container"
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -20,22 +20,26 @@ const NavBar = ({updateUser, currentUser}) => {
 
 	return(
 		<>
-			{currentUser ? 
+		{currentUser ?
 			<Navbar bg="dark" variant="dark" expand="lg">
-					<Container className="nav-bar">
-						<Navbar.Brand>My Glucose Checkup</Navbar.Brand>
-						<Navbar.Toggle aria-controls="basic-navbar-nav" />
-						<Navbar.Collapse id="basic-navbar-nav"></Navbar.Collapse>
-							<Nav className="me-auto">							
-								<Nav.Link href="/dashboard">Dashboard</Nav.Link>
-								<Nav.Link href="/bgls/all">My BGLs</Nav.Link>
-								<Nav.Link href="/bgls/new">New Reading</Nav.Link>
-								<Nav.Link onClick={handleLogout}>Logout</Nav.Link>
-							</Nav> 		
-					</Container> 
-									
-			</Navbar>
-			: null }
+			<Container className="nav-bar">
+				<Navbar.Brand>My Glucose Checkup</Navbar.Brand>	
+				<Navbar.Toggle aria-controls="basic-navbar-nav" />
+				<Navbar.Collapse id="basic-navbar-nav"></Navbar.Collapse>
+					<Nav className="me-auto">
+						<NavLink className="nav-link" to="/dashboard">
+							<Nav.Item>Dashboard</Nav.Item>						
+						</NavLink>
+						<NavLink className="nav-link" to="/bgls/all">
+							<Nav.Item>My BGLs</Nav.Item>			
+						</NavLink>
+						<NavLink className="nav-link" to="/bgls/new">
+							<Nav.Item>New Reading</Nav.Item>						
+						</NavLink>						
+						<Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+					</Nav> 		
+			</Container> 
+		</Navbar> : null } 
 		</>
 	)
 }

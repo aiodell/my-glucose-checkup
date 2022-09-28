@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {useHistory, Link} from "react-router-dom"
+import {useHistory, Link, NavLink} from "react-router-dom"
 import Container from "react-bootstrap/Container"
 import Button from "react-bootstrap/Button"
 import Form from 'react-bootstrap/Form';
@@ -34,10 +34,10 @@ const Signup = () => {
 		})
 		.then(r => {
 			if(r.ok){
-				r.json().then( () => {
-					history.push(`/login`)
-				})
-			} else{ r.json().then(json => setErrors(json.errors)) }
+				r.json().then( () => {history.push(`/login`)})
+			} else{ 
+				r.json().then(data => setErrors(data.errors)) 
+			}
 		})
 	}
 
@@ -78,7 +78,9 @@ const Signup = () => {
 			</Row>
 				<div>
 					<Button className="btns"type="submit">Submit</Button>
-					<Button className="btns" type="button" href="/">Cancel</Button>	
+					<NavLink to="/">
+						<Button className="btns" type="button">Cancel</Button>	
+					</NavLink>
 				</div>
 				<p>Already have an account? <Link to='/login'>Login</Link></p>
 			</Form>

@@ -1,8 +1,7 @@
-import {useHistory} from "react-router-dom"
-import {useEffect} from "react"
 import Container from 'react-bootstrap/Container';
 import Button from "react-bootstrap/Button"
 import bloodtest from '../bloodtest.jpg'
+import {NavLink} from "react-router-dom"
 import '../styles.css';
 // main display when a user enters the page
 const Home = () => {
@@ -14,8 +13,12 @@ const Home = () => {
             Welcome to My Glucose Check-Up
           </h1>
           <div className="home-btn-div">
-            <Button className="btns" href="/signup">Signup</Button>{' '}
-            <Button className="btns" href="/login">Login</Button>
+            <NavLink to= "/signup">
+              <Button className="btns" >Sign Up</Button>
+            </NavLink>
+            <NavLink to="/login">
+              <Button className="btns" >Login</Button>
+            </NavLink>
           </div>
       </header>
     </Container>
