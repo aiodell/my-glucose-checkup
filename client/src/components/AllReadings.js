@@ -15,7 +15,7 @@ const AllReadings = ({readings, setReadings }) => {
 				r.json().then(readings => setReadings(readings))
 			}else{
 				r.json().then(data => {
-					setErrors(data.error)
+					setErrors(data.errors)
 					history.push("/login")
 				})
 			}

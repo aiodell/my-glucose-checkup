@@ -5,41 +5,21 @@ import Container from "react-bootstrap/Container"
 import Button from "react-bootstrap/Button"
 import Card from 'react-bootstrap/Card';
 
-const BglEventDetails = ({deleteReading, updateBgl}) => {
+const BglEventDetails = ({deleteReading, updateBgl, readings}) => {
 	const[showForm, setShowForm] = useState(false)
 	const history = useHistory()
-	const [{data: bgl, error, status}, setBgl] = useState({
-		data: null,
-		error: null,
-		status: "pending"
-	})
-	const {id} = useParams()
-
-	useEffect(() => {
-		fetch(`/bgls/${id}`).then((r) => {
-			if(r.ok){
-				r.json().then((bgl) =>
-				setBgl({data: bgl, error: null, status: "resolved"})
-				)
-			} else{
-				r.json().then((data) => {
-					setBgl({data: null, error: data.error, status: "rejected"})
-				})
-			}
-		})
-	}, [])
-
-	if(status === "pending") return <h1>Gathering your data...</h1>
-	if(status === "rejected") return <h1>Error: {error.error}</h1>
+	const params = useParams()
+	console.log(readings)
+	const reading = readings?.find(bgl => bgl.id == params.id)
 
 	const showUpdateForm = () => { setShowForm(current => !current)}
 
 	const handleDelete = () => {
-		fetch(`/bgls/${id}`, {
+		fetch(`/bgls/${params.id}`, {
 			method: "DELETE",
 		})
 		.then(() =>{
-			deleteReading(id)
+			deleteReading(params.id)
 			history.push('/dashboard')
 		})
 	}
@@ -50,22 +30,21 @@ const BglEventDetails = ({deleteReading, updateBgl}) => {
 			<Card>
 				<Card.Body>
 					<Card.Title>
-						<h1>{bgl.value}</h1>
+						<h1>{reading?.value}</h1>
 					</Card.Title>
 					<Card.Subtitle>
-						<h3 className="title">{bgl.created_at}</h3>
+						<h3 className="title">{reading?.created_at}</h3>
 					</Card.Subtitle>
 					<div>
 						<h4>Events</h4>	
-						{bgl.events.map((event) => (
+						{reading?.events?.map((event) => (
 							<div key= {event.id}>
-								<p>{event.category} <br/>
-								</p>
+								{event.category}
 							</div>
 						))}
 					</div>				
 					<div>
-						<NavLink to={`/bgls/${id}/bgl_events/new`}>
+						<NavLink to={`/bgls/${params.id}/bgl_events/new`}>
 							add new event
 						</NavLink>
 					</div>
@@ -75,11 +54,7 @@ const BglEventDetails = ({deleteReading, updateBgl}) => {
 			</Card>
 			<div>
 				{showForm ? 
-					<BglUpdateForm 
-						bgl= {bgl} 
-						setBgl= {setBgl} 
-						updateBgl = {updateBgl}
-					/> 
+					<BglUpdateForm updateBgl = {updateBgl}/> 
 				: null}
 			</div>
 		</Container>
