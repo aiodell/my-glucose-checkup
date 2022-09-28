@@ -1,6 +1,10 @@
 // can only be accessed by the admin
 import {useState} from "react"
 import AddEventForm from "./AddEventForm"
+import Container from "react-bootstrap/Container"
+import Button from "react-bootstrap/Button"
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 const Events = ({events, setEvents, deleteEvent}) => {
 	const[showAddEventForm, setShowAddEventForm] = useState(false)
@@ -27,22 +31,31 @@ const Events = ({events, setEvents, deleteEvent}) => {
 
 	const eventList = events.map((event) => {
 		return(
-			<div>
-				<li key={event.id}>
-					{event.category}
-					<button onClick={(e) => handleEventDelete(event.id)}>Delete Event</button>												
-				</li>		
-			</div>
+			<Card style={{width: '18rem'}}>
+				<ListGroup variant="flush">
+					<ListGroup.Item className="list" key={event.id}>
+						{event.category}												
+					</ListGroup.Item>
+				</ListGroup>
+				<Button className= "delete-btn" onClick={(e) => handleEventDelete(event.id)}>
+					Delete Event
+				</Button>	
+			</Card>
 		)
 	})
 
 	return(
-		<div>
-			<h3>Registered Events</h3>
-			{eventList}
-			<button onClick={showAddForm}>Add Event To List</button>
-			{showAddEventForm ? <AddEventForm addNewEvent = {addNewEvent}/> : null}
-		</div>
+		<Container className="container-style">
+		{errors ? errors.map(e => <section>{e}</section>):null}
+			<h3 className="title">Registered Events</h3>
+			<div className="event-card">
+				{eventList}
+			</div>
+			<Button className="btns" onClick={showAddForm}>Add Event To List</Button>
+			<div>
+				{showAddEventForm ? <AddEventForm addNewEvent = {addNewEvent}/> : null}
+			</div>
+		</Container>
 	)
 }
 

@@ -1,11 +1,11 @@
 import {useState} from "react"
+import Container from "react-bootstrap/Container"
+import Button from "react-bootstrap/Button"
+import Form from 'react-bootstrap/Form';
 
 const AddEventForm = ({addNewEvent}) => {
 	const[errors, setErrors] = useState([])
-	const[newEventData, setNewEventData] = useState({category: ""})
-	const {category} = newEventData
-
-	const handleChange = (e) => {setNewEventData({...newEventData, [e.target.name]: e.target.value})}
+	const[category, setCategory] = useState()
 
 	const handleAddEvent = (e) => {
 		e.preventDefault()
@@ -32,14 +32,16 @@ const AddEventForm = ({addNewEvent}) => {
 	}	
 
 	return(
-		<div>
+		<Container className="container-style">
 			{errors ? errors.map(e => <section>{e}</section>):null}
-			<form onSubmit={handleAddEvent}>
-				<label htmlFor="category">New Event Name</label>
-				<input type="text" name="category" onChange={handleChange}/>
-				<button type="submit">Add Event</button>
-			</form>		
-		</div>
+			<Form onSubmit={handleAddEvent}>
+				<Form.Group className="mb-3">
+					<Form.Label>New Event Name</Form.Label>
+					<Form.Control type="text" name="category" onChange={(e) => setCategory(e.target.value)}/>
+				</Form.Group>
+				<Button className="delete-btn"type="submit">Add Event</Button>
+			</Form>		
+		</Container>
 	)
 }
 

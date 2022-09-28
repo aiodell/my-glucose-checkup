@@ -7,9 +7,7 @@ import Form from 'react-bootstrap/Form';
 const NewReading = ({addNewReading}) => {
 	const[errors, setErrors] = useState([])
 	const history = useHistory()
-	const[readingData, setReadingData] = useState({value: ""})
-
-	const {value} = readingData
+	const[value, setValue] = useState({})
 
 	const onSubmit = (e) => {
 		e.preventDefault()
@@ -38,20 +36,20 @@ const NewReading = ({addNewReading}) => {
 	}
 
 	return(
-		<div>
+		<Container className="container-style">
 			<h2 className="title">New Reading</h2>
 			{errors ? errors.map(e => <section>{e}</section>):null}
 			<Form onSubmit={onSubmit}>
 				<Form.Group className="mb=3" controlId="value">
 					<Form.Label>Enter BGL</Form.Label>
-					<Form.Control type="text" placeholder="Enter value" onChange= {(e) => setReadingData(e.target.value)}/>				
+					<Form.Control type="text" placeholder="Enter value" onChange= {(e) => setValue(e.target.value)}/>				
 				</Form.Group>
 				<div>
 					<Button className="btns" type="submit" value="submit">Submit</Button>
 					<Button className="btns" type="button" value="cancel" href="/dashboard">Cancel</Button>
 				</div>
 			</Form>
-		</div>
+		</Container>
 	)
 }
 

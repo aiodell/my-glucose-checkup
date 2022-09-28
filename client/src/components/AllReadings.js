@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import { useHistory, Link } from "react-router-dom"
 import Card from 'react-bootstrap/Card';
+import Container from "react-bootstrap/Container"
+import Button from "react-bootstrap/Button"
 
 const AllReadings = ({readings, setReadings }) => {
 	const [errors, setErrors] = useState([])
@@ -31,16 +33,19 @@ const AllReadings = ({readings, setReadings }) => {
 	
 	const renderReadings = readings.map((bgl) => {
 		return(
-			<div>
-				<Card body as= {Link} key= {bgl.id} to= {`/bgls/${bgl.id}`}>
-					<p>
-						Value: {bgl.value} mg/dl <br/> 
-						Entered {bgl.created_at} 
-					</p>
-				</Card>	
-				<button onClick={() => handleDelete(bgl.id)}>Delete</button>		
-			</div>
-
+			<Card className="bgl-card" key= {bgl.id} as={Link} to= {`/bgls/${bgl.id}`}>
+				<Card.Body>
+					<Card.Title className="card-title">
+						{bgl.value} mg/dl
+					</Card.Title>
+					<Card.Text>
+						{bgl.created_at} 
+					</Card.Text>
+				</Card.Body>				
+				<Button className="delete-btn" onClick={() => handleDelete(bgl.id)}>
+					Delete
+				</Button>
+			</Card>	
 		)
 	})
 
@@ -50,11 +55,16 @@ const AllReadings = ({readings, setReadings }) => {
 	const toDashboard = () => {history.push("/dashboard")}
 
 	return(
-		<>	
-			<button onClick={newReading}>New Reading</button>
-			<button onClick={toDashboard}>Back to Dashboard</button>
-			{renderReadings}
-		</>
+		<Container >	
+			<Container className="all-bgl-container-style">
+				<h3 className="title">All Readings</h3>
+				<Button href="/bgls/new" className="btns">Add New</Button>
+				<Button href="/dashboard" className="btns">Dashboard</Button>
+				<Container className="container-style">
+					{renderReadings}
+				</Container>
+			</Container>
+		</Container>
 	)
 }
 

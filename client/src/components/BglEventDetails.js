@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react"
 import { useParams, useHistory, Link } from "react-router-dom"
 import BglUpdateForm from "./BglUpdateForm"
+import Container from "react-bootstrap/Container"
+import Button from "react-bootstrap/Button"
+import Card from 'react-bootstrap/Card';
 
 const BglEventDetails = ({deleteReading, updateBgl}) => {
 	const[showForm, setShowForm] = useState(false)
@@ -42,24 +45,36 @@ const BglEventDetails = ({deleteReading, updateBgl}) => {
 	}
 
 	return(
-		<div>
-			<h2>{bgl.value}</h2>
-			<h2>{bgl.created_at}</h2>
-			<section>
-				<h3>Event Details:</h3>
-				{bgl.events.map((event) => (
-					<div key= {event.id}>
-						<p>{event.category} <br/>
-						</p>
+		<Container className= "container-style">
+		<h3 className="title">Blood Glucose Level Details:</h3>
+			<Card>
+				<Card.Body>
+					<Card.Title>
+						<h1>{bgl.value}</h1>
+					</Card.Title>
+					<Card.Subtitle>
+						<h3 className="title">{bgl.created_at}</h3>
+					</Card.Subtitle>
+					<div>
+						<h4>Events</h4>	
+						{bgl.events.map((event) => (
+							<div key= {event.id}>
+								<p>{event.category} <br/>
+								</p>
+							</div>
+						))}
+					</div>				
+					<div>
+						<Card.Link href={`/bgls/${params.id}/bgl_events/new`}>
+							add new event
+						</Card.Link>
 					</div>
-				))}
-			</section>
+				</Card.Body>
+			</Card>
+			
 			<div>
-				<Link to={`/bgls/${params.id}/bgl_events/new`}>add new event</Link>
-			</div>
-			<div>
-				<button onClick = {handleDelete}>Delete</button>
-				<button onClick= {showUpdateForm}>Edit Value</button>
+				<Button className="btns" onClick = {handleDelete}>Delete</Button>
+				<Button className="btns" onClick= {showUpdateForm}>Edit Value</Button>
 				{showForm ? 
 					<BglUpdateForm 
 						bgl= {bgl} 
@@ -68,7 +83,7 @@ const BglEventDetails = ({deleteReading, updateBgl}) => {
 					/> 
 				: null}
 			</div>
-		</div>
+		</Container>
 	)
 }
 

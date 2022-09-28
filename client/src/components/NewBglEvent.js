@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react"
 import {useHistory, useParams } from "react-router-dom"
+import Container from "react-bootstrap/Container"
+import Button from "react-bootstrap/Button"
+import Form from 'react-bootstrap/Form';
 
 const NewBglEvent = ({events}) => {
 	const[errors, setErrors] = useState([])
@@ -37,14 +40,13 @@ const NewBglEvent = ({events}) => {
 	}
 
 	return(
-		<div>
-			<h3>Add new event for BGL {bgl.value}<br/>
-				added: {bgl.created_at}
+		<Container className="container-style">
+			<h3 className= "title">Add new event for BGL {bgl.value}<br/>
+				{bgl.created_at}
 			</h3>
 			{errors ? errors.map(e => <section>{e}</section>):null}
-			<form onSubmit={handleSubmit}>
-				<label htmlFor="event_id">New Event</label>
-				<select onChange ={(e) => {
+			<Form onSubmit={handleSubmit}>
+				<Form.Select size="lg" onChange ={(e) => {
 					setEventId(e.target.value)
 					setBglId(bgl.id)
 					}}>
@@ -54,10 +56,10 @@ const NewBglEvent = ({events}) => {
 							{event.category}
 						</option>
 					))}
-				</select>
-				<button type="submit">Save</button>
-			</form>
-		</div>
+				</Form.Select>
+				<Button className="btns" type="submit">Save</Button>
+			</Form>
+		</Container>
 	)
 }
 

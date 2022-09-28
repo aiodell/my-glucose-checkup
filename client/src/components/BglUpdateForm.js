@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react"
-import {useParams } from "react-router-dom"
+import {useParams, useHistory } from "react-router-dom"
+import Container from "react-bootstrap/Container"
+import Button from "react-bootstrap/Button"
+import Form from 'react-bootstrap/Form';
 
 const BglUpdateForm = ({updateBgl}) => {
 	const [errors, setErrors] = useState([])
-	const[value, setValue] = useState({value: ""})
+	const[value, setValue] = useState({ })
 	const[bgl, setBgl]= useState([])
+	const history = useHistory()
 	const {id} = useParams()
 
 	useEffect(()=> {
@@ -28,7 +32,7 @@ const BglUpdateForm = ({updateBgl}) => {
 			if(r.ok){
 				r.json().then(bglUpdate => {
 					updateBgl(bglUpdate)
-					window.location.reload(false)
+					history.push("/bgls/all")
 				})
 			}else{
 				r.json().then(data => {
@@ -38,19 +42,16 @@ const BglUpdateForm = ({updateBgl}) => {
 		})
 	}
 
-	const handleChange = (e) => {
-		setValue(e.target.value)
-	}
-	
 	return(
-		<div>
+		<Container className="container-style">
 			{errors ? errors.map(e => <section>{e}</section>):null}
-			<form onSubmit={handleUpdate}>
-				<label htmlFor="value">Update Bgl Value</label>
-				<input type="text" name="value" onChange={handleChange}/>
-				<button type="submit">Update</button>
-			</form>
-		</div>
+			<Form onSubmit={handleUpdate}>
+				<Form.Group>
+					<Form.Control type="text" name="value" onChange={(e) => setValue(e.target.value)}/>
+					<Button className="btns" type="submit">Update</Button>			
+				</Form.Group>
+			</Form>
+		</Container>
 		
 	)
 
