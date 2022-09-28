@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Switch, Route, useHistory } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar"
 import Login from "./components/Login"
 import Signup from "./components/Signup"

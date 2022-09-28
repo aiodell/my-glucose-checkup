@@ -33,26 +33,23 @@ const AllReadings = ({readings, setReadings }) => {
 	
 	const renderReadings = readings.map((bgl) => {
 		return(
-			<Card className="bgl-card" key= {bgl.id} as={Link} to= {`/bgls/${bgl.id}`}>
-				<Card.Body>
-					<Card.Title className="card-title">
-						{bgl.value} mg/dl
-					</Card.Title>
-					<Card.Text>
-						{bgl.created_at} 
-					</Card.Text>
-				</Card.Body>				
+			<>
+				<Card className="bgl-card" key= {bgl.id} as={Link} to= {`/bgls/${bgl.id}`}>
+					<Card.Body>
+						<Card.Title className="card-title">
+							{bgl.value} mg/dl
+						</Card.Title>
+						<Card.Text>
+							{bgl.created_at} 
+						</Card.Text>
+					</Card.Body>				
+				</Card>
 				<Button className="delete-btn" onClick={() => handleDelete(bgl.id)}>
 					Delete
 				</Button>
-			</Card>	
+			</>
 		)
 	})
-
-	// move to new reading page
-	const newReading = () => {history.push("/bgls/new")}
-	// return to dashboard
-	const toDashboard = () => {history.push("/dashboard")}
 
 	return(
 		<Container >	

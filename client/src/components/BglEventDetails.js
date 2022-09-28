@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useParams, useHistory, Link } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 import BglUpdateForm from "./BglUpdateForm"
 import Container from "react-bootstrap/Container"
 import Button from "react-bootstrap/Button"

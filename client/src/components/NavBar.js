@@ -19,22 +19,24 @@ const NavBar = ({updateUser, currentUser}) => {
 	}
 
 	return(
-		<Navbar bg="dark" variant="dark" expand="lg">
-		{currentUser ? 
-			<Container className="nav-bar">
-				<Navbar.Brand>My Glucose Checkup</Navbar.Brand>
-				<Navbar.Toggle aria-controls="basic-navbar-nav" />
-				<Navbar.Collapse id="basic-navbar-nav"></Navbar.Collapse>
-					<Nav className="me-auto">
-						
-						<Nav.Link href="/dashboard">Dashboard</Nav.Link>
-						<Nav.Link href="/bgls/all">My BGLs</Nav.Link>
-						<Nav.Link href="/bgls/new">New Reading</Nav.Link>
-						<Nav.Link onClick={handleLogout}>Logout</Nav.Link>
-					</Nav> 		
-			</Container> 
-		: null } 	
-		</Navbar>
+		<>
+			{currentUser ? 
+			<Navbar bg="dark" variant="dark" expand="lg">
+					<Container className="nav-bar">
+						<Navbar.Brand>My Glucose Checkup</Navbar.Brand>
+						<Navbar.Toggle aria-controls="basic-navbar-nav" />
+						<Navbar.Collapse id="basic-navbar-nav"></Navbar.Collapse>
+							<Nav className="me-auto">							
+								<Nav.Link href="/dashboard">Dashboard</Nav.Link>
+								<Nav.Link href="/bgls/all">My BGLs</Nav.Link>
+								<Nav.Link href="/bgls/new">New Reading</Nav.Link>
+								<Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+							</Nav> 		
+					</Container> 
+									
+			</Navbar>
+			: null }
+		</>
 	)
 }
 
