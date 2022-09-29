@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container"
 import Button from "react-bootstrap/Button"
 import Form from 'react-bootstrap/Form';
 
-const BglUpdateForm = ({updateBgl, setBgl}) => {
+const BglUpdateForm = ({updateBgl}) => {
 	const [errors, setErrors] = useState([])
 	const[value, setValue]= useState("")
 	const {id} = useParams()

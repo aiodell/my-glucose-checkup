@@ -71,9 +71,9 @@ const Dashboard = ({readings, setReadings, currentUser}) => {
 		<Container className="container-style">	
 			{errors ? errors.map(e => <section>{e}</section>):null}
 			<Container className="dash-container">
-				<h1 className="dash-title">
-					Welcome to your dashboard, {currentUser.first_name} 
-				</h1>	
+				{currentUser.name ? <h1 className="dash-title">
+					Welcome to your dashboard, {currentUser.first_name} </h1> 
+					: <h1>Welcome to your dashboard!</h1> }
 				{currentUser.admin ? 
 				<>
 					<Row>
@@ -83,7 +83,9 @@ const Dashboard = ({readings, setReadings, currentUser}) => {
 						<Row className="low-high-avg">
 							<Col>{renderLowest}</Col>
 							<Col>
-								<h2>Average: {renderAverage}</h2>
+								{renderAverage == 0 ? <h3> You do not have any readings!</h3> :
+								 	<h2> Average: {renderAverage}</h2>
+								 }
 							</Col>
 							<Col>{renderHighest}</Col>
 						</Row>

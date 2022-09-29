@@ -9,14 +9,14 @@ const NewBglEvent = ({events}) => {
 	const[bgl, setBgl] = useState("")
 	const[eventId, setEventId] = useState("")
 	const[bglId, setBglId] = useState("")
-	const {id} = useParams()
+	const params = useParams()
 	const history = useHistory()
 
 	useEffect(()=> {
-		fetch(`/bgls/${id}`)
+		fetch(`/bgls/${params.id}`)
 		.then((r)=>r.json())
 		.then(setBgl)
-	}, [id])
+	}, [])
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -32,7 +32,7 @@ const NewBglEvent = ({events}) => {
 			body: JSON.stringify(formData),
 		}).then((r) => {
 			if(r.ok) {
-				history.push(`/bgls/${id}`)
+				history.push(`/bgls/${params.id}`)
 			} else {
 				r.json().then((data) => setErrors(data.errors))
 			}
