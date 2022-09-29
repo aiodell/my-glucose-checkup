@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	skip_before_action :authenticate_user
+	skip_before_action :authenticate_user, only: :create
 	
 	# /POST create new user
 	def create
@@ -14,12 +14,7 @@ class UsersController < ApplicationController
 
 	# /GET get a single user
 	def show
-		user = User.find_by(id: session[:user_id])
-		if session[:user_id]
-			render json: user, status: :ok
-		else
-			render json: { errors: ["Not Authorized"]}, status: :unauthorized
-		end
+		render json: User.find_by(id: session[:user_id]), status: :ok
 	end
 
 	private

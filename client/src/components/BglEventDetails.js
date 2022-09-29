@@ -7,11 +7,25 @@ import Card from 'react-bootstrap/Card';
 
 const BglEventDetails = ({deleteReading, updateBgl, readings}) => {
 	const[showForm, setShowForm] = useState(false)
+	const[singleBgl, setSingleBgl] = useState({ })
+	const[errors, setErrors] = useState([])
 	const history = useHistory()
 	const params = useParams()
 	console.log(readings)
-	const reading = readings?.find(bgl => bgl.id == params.id)
 
+	useEffect(() => {
+		fetch(`/bgls/${params.id}`).then((r) => {
+			if(r.ok){
+				r.json().then((bgl) => setSingleBgl(bgl))
+			}else{
+				r.json().then((data) => {
+					setErrors(data.errors)
+				})
+			}
+		})
+	}, [])	
+
+	const reading = readings?.find(bgl => bgl.id == singleBgl.id)
 	const showUpdateForm = () => { setShowForm(current => !current)}
 
 	const handleDelete = () => {
@@ -26,6 +40,7 @@ const BglEventDetails = ({deleteReading, updateBgl, readings}) => {
 
 	return(
 		<Container className= "container-style">
+		{errors ? errors.map(e => <section>{e}</section>):null}		
 		<h3 className="title">Blood Glucose Level Details:</h3>
 			<Card>
 				<Card.Body>
@@ -37,7 +52,7 @@ const BglEventDetails = ({deleteReading, updateBgl, readings}) => {
 					</Card.Subtitle>
 					<div>
 						<h4>Events</h4>	
-						{reading?.events?.map((event) => (
+						{singleBgl.events?.map((event) => (
 							<div key= {event.id}>
 								{event.category}
 							</div>

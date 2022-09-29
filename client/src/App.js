@@ -41,9 +41,10 @@ const App = () => {
 		.then(setReadings)
 	}, [])  
 
-  const addNewReading = (newReading) => {setReadings(readings => [...readings, newReading])}
   const updateUser = (user) => setCurrentUser(user)
-  
+
+  const addNewReading = (newReading) => {setReadings(readings => [...readings, newReading])}
+ 
   const deleteReading = (deletedReading) => {
     setReadings((readings) => readings.filter((reading) => reading.id !== deletedReading))
   }
@@ -53,7 +54,6 @@ const App = () => {
   }
 
   const updateBgl = (updatedBgl) => {
-    // const newBgl = 
     setReadings((readings) => readings.map(bgl => bgl.id === updatedBgl.id ? updatedBgl : bgl))
     console.log(readings)
   }
