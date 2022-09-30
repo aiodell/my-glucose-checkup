@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_27_134514) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_30_153815) do
   create_table "bgl_events", force: :cascade do |t|
     t.integer "bgl_id", null: false
     t.integer "event_id", null: false
@@ -28,6 +28,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_27_134514) do
 
   create_table "events", force: :cascade do |t|
     t.string "category"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.integer "followed_id"
+    t.integer "followee_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "provider_column_in_users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
