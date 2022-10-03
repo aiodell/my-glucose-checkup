@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Switch, Route, useHistory } from "react-router-dom";
+import { useState, useEffect } from "react"
+import { Switch, Route, useHistory } from "react-router-dom"
 import NavBar from "./components/NavBar"
 import Login from "./components/Login"
 import Signup from "./components/Signup"
@@ -10,8 +10,11 @@ import Home from "./components/Home"
 import BglEventDetails from "./components/BglEventDetails"
 import NewBglEvent from "./components/NewBglEvent"
 import Events from "./components/Events"
-import UserPage from "./components/UserPage"
-import './styles.css';
+import UserProfile from "./components/UserProfile"
+import CreateProfile from "./components/CreateProfile"
+import FindUser from "./components/FindUser"
+
+import './styles.css'
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState("")
@@ -105,10 +108,16 @@ const App = () => {
           setEvents = {setEvents}
         />
       </Route>
-      <Route exact path="/me">
-        <UserPage 
-          currentUser = {currentUser}
+      <Route exact path= "/me">
+        <UserProfile 
+        currentUser = {currentUser}
         />
+      </Route>
+      <Route exact path = "/create-profile">
+        <CreateProfile />
+      </Route>
+      <Route exact path= "/find-user">
+        <FindUser />
       </Route>
       <Route exact path="/">
         <Home 

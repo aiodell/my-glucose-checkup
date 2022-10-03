@@ -5,7 +5,7 @@ class BglsController < ApplicationController
     	render json: @bgls, each_serializer: AllBglEventsSerializer, status: :ok
 	end
 
-		def show
+	def show
     	@bgl = Bgl.find_by(user_id: session[:user_id], id: params[:id] )
     	render json: @bgl, serializer: AllBglEventsSerializer, status: :ok
   	end

@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  month: 1
+  day: 1
+  year: 1
+  phone: MyString
+  allow_followers: false
+  family_member: false
+
+two:
+  month: 1
+  day: 1
+  year: 1
+  phone: MyString
+  allow_followers: false
+  family_member: false

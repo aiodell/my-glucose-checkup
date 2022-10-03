@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_30_153815) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_03_185037) do
   create_table "bgl_events", force: :cascade do |t|
     t.integer "bgl_id", null: false
     t.integer "event_id", null: false
@@ -37,6 +37,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_30_153815) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.integer "month"
+    t.integer "day"
+    t.integer "year"
+    t.string "phone"
+    t.boolean "allow_followers"
+    t.boolean "family_member"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "provider_column_in_users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,6 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_30_153815) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.boolean "admin"
+    t.boolean "has_profile"
   end
 
   add_foreign_key "bgl_events", "bgls"

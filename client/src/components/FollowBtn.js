@@ -1,3 +1,6 @@
+import {useState} from "react"
+import Button from "react-bootstrap/Button"
+
 const FollowBtn = ({currentUser, user, onFollow, isFollowing}) => {
 	const [errors, setErrors] = useState([])
 
@@ -37,7 +40,7 @@ const FollowBtn = ({currentUser, user, onFollow, isFollowing}) => {
   return(
     <>
 	  {errors ? errors.map(e => <section>{e}</section>):null}
-      <Button onClick={handleFollow} className="btns">{isFollowing ? "Stop Notifications" : "Get Notified"}</Button>
+      <Button onClick={handleFollow} className="delete-btn">{isFollowing ? "Stop Notifications" : "Get Notified"}</Button>
     </>
   )
 }

@@ -52,7 +52,6 @@ const Dashboard = ({readings, setReadings, currentUser}) => {
 				<h2 key={num.id}> Highest: {num.value}</h2>
 				<Link to= {`/bgls/${num.id}`} className="small-link"> View Details</Link>
 			</div>
-
 		)
 	})
 
@@ -126,7 +125,6 @@ const Dashboard = ({readings, setReadings, currentUser}) => {
 				</> }
 			</Container>
 		</Container>
-			
 	)
 }
 

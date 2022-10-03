@@ -11,7 +11,6 @@ const BglEventDetails = ({deleteReading, updateBgl, readings}) => {
 	const[errors, setErrors] = useState([])
 	const history = useHistory()
 	const params = useParams()
-	console.log(readings)
 
 	useEffect(() => {
 		fetch(`/bgls/${params.id}`).then((r) => {

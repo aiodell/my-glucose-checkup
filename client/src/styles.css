@@ -178,3 +178,27 @@ body {
   outline: none;
   font-size: 1.5rem;
 }
+
+/* Profile Completion Form */
+.form-title{
+  text-align: center;
+  margin-top: 15px;
+}
+
+.profile-completion{
+  text-align: center;
+  padding: 15px;
+  margin: 10px;
+  box-shadow: 1px 2px 0px 1px black;
+  background-image: linear-gradient(#eaeaea, #ffffff);
+  color: rgb(0, 0, 0);
+}
+
+.profile-label{
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+.form-check{
+  margin-top: 5px
+}
