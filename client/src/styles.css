@@ -93,7 +93,8 @@ body {
 .current-txt{
   text-align: center;
   font-size: 4rem;
-  margin-top: 40px;
+  padding-top: 40px;
+  padding-left: 5px;
   position: relative;
 }
 
@@ -155,4 +156,25 @@ body {
 
 .card-title{
   font-size: 150%;
+}
+
+.search {
+  width: 50%;
+  text-align: center;
+
+  position: relative;
+  display: block;
+  margin: auto;
+  padding: 2rem;
+}
+
+.searchTerm {
+  text-align: center;
+  width: 100%;
+  border: 3px solid #004e59;
+  padding: 5px;
+  height: 3rem;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1.5rem;
 }

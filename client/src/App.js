@@ -10,6 +10,7 @@ import Home from "./components/Home"
 import BglEventDetails from "./components/BglEventDetails"
 import NewBglEvent from "./components/NewBglEvent"
 import Events from "./components/Events"
+import UserPage from "./components/UserPage"
 import './styles.css';
 
 const App = () => {
@@ -102,6 +103,11 @@ const App = () => {
           deleteEvent = {deleteEvent}
           events = {events}
           setEvents = {setEvents}
+        />
+      </Route>
+      <Route exact path="/me">
+        <UserPage 
+          currentUser = {currentUser}
         />
       </Route>
       <Route exact path="/">

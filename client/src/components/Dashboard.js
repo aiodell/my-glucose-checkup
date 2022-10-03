@@ -99,6 +99,9 @@ const Dashboard = ({readings, setReadings, currentUser}) => {
 							<NavLink to="/bgls/new">
 								<Button className="btns">New Test Reading</Button>
 							</NavLink>						
+						</div>
+						<div>
+							{/* Add updates from followed users here */}
 						</div>					
 				</> :
 				<>

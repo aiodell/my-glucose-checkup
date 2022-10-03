@@ -35,6 +35,9 @@ const NavBar = ({updateUser, currentUser}) => {
 						</NavLink>
 						<NavLink className="nav-link" to="/bgls/new">
 							<Nav.Item>New Reading</Nav.Item>						
+						</NavLink>
+						<NavLink className="nav-link" to="/me">
+							<Nav.Item>My Account</Nav.Item>
 						</NavLink>						
 						<Nav.Link onClick={handleLogout}>Logout</Nav.Link>
 					</Nav> 		
