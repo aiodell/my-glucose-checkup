@@ -1,6 +1,5 @@
 import Container from 'react-bootstrap/Container';
 import Button from "react-bootstrap/Button"
-import bloodtest from '../bloodtest.jpg'
 import {NavLink} from "react-router-dom"
 import '../styles.css';
 // main display when a user enters the page

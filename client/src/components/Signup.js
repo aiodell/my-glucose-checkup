@@ -20,12 +20,13 @@ const Signup = () => {
 	const handleSignup = (e) => {
 		e.preventDefault()
 		const userData ={
-			username,
-			password,
-			passwordConfirmation,
-			firstName,
-			lastName,
-			email,
+			username: username,
+			password: password,
+			password_confirmation: passwordConfirmation,
+			first_name: firstName,
+			last_name: lastName,
+			email: email,
+			has_profile: false
 		}
 		fetch(`/signup`, {
 			method: "POST",

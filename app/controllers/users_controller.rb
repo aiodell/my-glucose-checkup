@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 			render json: { errors: ["Invalid username or password"]}, status: :unprocessable_entity
 		end
     end
-
+	
 	# /GET get a single user
 	def show
 		render json: User.find_by(id: session[:user_id]), status: :ok
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 	private
 
 	def user_params
-		params.permit(:first_name, :last_name, :username, :email, :password, :password_confirmation)
+		params.permit(:first_name, :last_name, :username, :email, :password, :password_confirmation, :has_profile)
 	end
 
   end
