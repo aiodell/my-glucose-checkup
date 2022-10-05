@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_03_185037) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_04_143647) do
   create_table "bgl_events", force: :cascade do |t|
     t.integer "bgl_id", null: false
     t.integer "event_id", null: false

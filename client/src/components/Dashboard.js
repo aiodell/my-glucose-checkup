@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react"
 import {useHistory, Link, NavLink } from "react-router-dom"
 import Container from "react-bootstrap/Container"
+import Card from "react-bootstrap/Card"
 import Button from "react-bootstrap/Button"
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-const Dashboard = ({readings, setReadings, currentUser}) => {
+const Dashboard = ({currentUser}) => {
+	const[readings, setReadings] = useState([])
 	const[errors, setErrors] = useState([])
 	const history= useHistory()
 
@@ -21,7 +23,7 @@ const Dashboard = ({readings, setReadings, currentUser}) => {
 				})
 			}
 		})
-	}, [])
+	}, [ ])
 
 	// sort the highest, lowest, and most current value
 	const lowestValue = [...readings].sort((a,b) => a.value - b.value)
@@ -58,9 +60,9 @@ const Dashboard = ({readings, setReadings, currentUser}) => {
 	const renderCurrent = highestId.slice(0,1).map((num) => {
 		return(
 		<>
-			<div className="current-bgl">
+			<Card className="current-bgl">
 				<h1 className="current-txt" key={num.id}> {num.value} </h1>
-			</div>
+			</Card>
 			<Link to= {`/bgls/${num.id}`} className="small-link"> View Details</Link>
 		</>
 		)
@@ -69,7 +71,7 @@ const Dashboard = ({readings, setReadings, currentUser}) => {
 	return(
 		<Container className="container-style">	
 			{errors ? errors.map(e => <section>{e}</section>):null}
-			<Container className="dash-container">
+			<Card className="dash-container">
 				{currentUser.name ? <h1 className="dash-title">
 					Welcome to your dashboard, {currentUser.first_name} </h1> 
 					: <h1>Welcome to your dashboard!</h1> }
@@ -82,7 +84,7 @@ const Dashboard = ({readings, setReadings, currentUser}) => {
 						<Row className="low-high-avg">
 							<Col>{renderLowest}</Col>
 							<Col>
-								{renderAverage == 0 ? <h3> You do not have any readings!</h3> :
+								{renderAverage === 0 ? <h3> You do not have any readings!</h3> :
 								 	<h2> Average: {renderAverage}</h2>
 								 }
 							</Col>
@@ -110,7 +112,9 @@ const Dashboard = ({readings, setReadings, currentUser}) => {
 						<Row className="low-high-avg">
 							<Col>{renderLowest}</Col>
 							<Col>
-								<h2>Average: {renderAverage}</h2>
+								{renderAverage === 0 ? <h3> You do not have any readings!</h3> :
+								 	<h2> Average: {renderAverage}</h2>
+								}
 							</Col>
 							<Col>{renderHighest}</Col>
 						</Row>
@@ -123,7 +127,7 @@ const Dashboard = ({readings, setReadings, currentUser}) => {
 							</NavLink>								
 						</div>					
 				</> }
-			</Container>
+			</Card>
 		</Container>
 	)
 }

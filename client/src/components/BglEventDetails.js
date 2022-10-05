@@ -13,7 +13,8 @@ const BglEventDetails = ({deleteReading, updateBgl, readings}) => {
 	const params = useParams()
 
 	useEffect(() => {
-		fetch(`/bgls/${params.id}`).then((r) => {
+		fetch(`/bgls/${params.id}`)
+		.then((r) => {
 			if(r.ok){
 				r.json().then((bgl) => setSingleBgl(bgl))
 			}else{

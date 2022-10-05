@@ -76,14 +76,14 @@ const CreateProfile = () => {
 				<Form.Group className="mb=3" controlId="allow_followers">
 					<Form.Check
 						type="checkbox"
-						label= "I don't want any followers"
+						label= "I want followers"
 						onChange={handleAllowFollowers}
 					/>
 				</Form.Group>	
 				<Form.Group className="mb=3" controlId="family_member">
 					<Form.Check
 						type="checkbox"
-						label="I am only a family member"
+						label="I am a family member"
 						onChange={handleFamilyCheck}
 					/>
 				</Form.Group>

@@ -1,12 +1,16 @@
 class FollowsController < ApplicationController
 
+	def index
+		render json: Follow.all
+	end
+
 	def create
 		follow = Follow.create!(follow_params)
-		render json: follow, status: created
+		render json: follow, status: :created
 	end
 
 	def destroy
-		follow = Follow.find_by!({follower_id: session[:user_id], followee_id: params[:id]})
+		follow = Follow.find_by!({followee_id: session[:user_id], followed_id: params[:id]})
 		follow.destroy
 		head :no_content
 	end
@@ -14,6 +18,6 @@ class FollowsController < ApplicationController
 	private
 
 	def follow_params
-		params.permit(:id, :followee_id, :follower_id)
+		params.permit(:id, :followee_id, :followed_id)
 	end
 end

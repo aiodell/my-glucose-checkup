@@ -12,14 +12,14 @@ import NewBglEvent from "./components/NewBglEvent"
 import Events from "./components/Events"
 import UserProfile from "./components/UserProfile"
 import CreateProfile from "./components/CreateProfile"
-import FindUser from "./components/FindUser"
-
+import AllUsers from "./components/AllUsers"
 import './styles.css'
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState("")
   const [readings, setReadings] = useState([])
   const [events, setEvents] = useState([])
+  const [users, setUsers] = useState([])
   const history = useHistory()
 
   useEffect( () => {
@@ -31,7 +31,7 @@ const App = () => {
         history.push("/login")
       }
     })
-  }, [])
+  }, [ ])
 
 	useEffect(() => {
 		fetch("/events")
@@ -44,6 +44,12 @@ const App = () => {
 		.then((r) => r.json())
 		.then(setReadings)
 	}, [])  
+
+  useEffect(() => {
+    fetch("/users")
+    .then((r) => r.json())
+    .then(setUsers)
+  }, [])
 
   const updateUser = (user) => setCurrentUser(user)
 
@@ -116,8 +122,10 @@ const App = () => {
       <Route exact path = "/create-profile">
         <CreateProfile />
       </Route>
-      <Route exact path= "/find-user">
-        <FindUser />
+      <Route exact path= "/users">
+        <AllUsers 
+        currentUser = {currentUser}
+        users = {users} />
       </Route>
       <Route exact path="/">
         <Home 

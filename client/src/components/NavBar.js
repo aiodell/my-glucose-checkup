@@ -42,8 +42,8 @@ const NavBar = ({updateUser, currentUser}) => {
 						<NavLink className="nav-link" to="/following">
 							<Nav.Item>Following</Nav.Item>
 						</NavLink>
-						<NavLink className="nav-link" to="/find-user">
-							<Nav.Item>Find User</Nav.Item>
+						<NavLink className="nav-link" to="/users">
+							<Nav.Item>All Users</Nav.Item>
 						</NavLink>																		
 						<Nav.Link onClick={handleLogout}>Logout</Nav.Link>
 					</Nav> 		
