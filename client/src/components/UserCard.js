@@ -9,45 +9,47 @@ const UserCard = ({user, currentUser}) => {
 const [errors, setErrors] = useState([])
 const [isFollowing, setIsFollowing] = useState(false)
 
+// change the state from following to unfollowing and vice versa
 const onFollow = () => {
     setIsFollowing((prev) => !prev)
 }
 
+  // handle the follow
   const handleFollow = () => {
     const following = currentUser ? {
       followed_id: user.id,
       followee_id: currentUser.id
       } : null 
 
-      isFollowing ? (
-        fetch(`/follows/${user.id}`, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json"
-          }
-        }).then((r) => {
-          if (r.ok){
-            r.json().then((onFollow(false)))
-          }else{
-            r.json().then((data) => setErrors(data.errors))
-          }
-        })
-      ) : (
-        fetch("/follows", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(following)
-        })
-        .then((r) => {
-          if(r.ok){
-            r.json().then(() => onFollow(true)
-            )}else{
-            r.json().then((data) => setErrors(data.errors))
-          }
-        })
-      )
+    isFollowing ? (
+      fetch(`/follows/${user.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }).then((r) => {
+        if (r.ok){
+          r.json().then(() => onFollow(false))
+        }else{
+          r.json().then((data) => setErrors(data.errors))
+        }
+      })
+    ) : (
+      fetch("/follows", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(following)
+      })
+      .then((r) => {
+        if(r.ok){
+          r.json().then(() => onFollow(true)
+          )}else{
+          r.json().then((data) => setErrors(data.errors))
+        }
+      })
+    )
   }
 
 	return(
