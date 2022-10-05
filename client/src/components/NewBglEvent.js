@@ -16,7 +16,7 @@ const NewBglEvent = ({events}) => {
 		fetch(`/bgls/${params.id}`)
 		.then((r)=>r.json())
 		.then(setBgl)
-	}, [])
+	}, [params.id])
 
 	const handleSubmit = (e) => {
 		e.preventDefault();

@@ -93,7 +93,8 @@ body {
 .current-txt{
   text-align: center;
   font-size: 4rem;
-  margin-top: 40px;
+  padding-top: 40px;
+  padding-left: 5px;
   position: relative;
 }
 
@@ -155,4 +156,49 @@ body {
 
 .card-title{
   font-size: 150%;
+}
+
+.search {
+  width: 50%;
+  text-align: center;
+
+  position: relative;
+  display: block;
+  margin: auto;
+  padding: 2rem;
+}
+
+.searchTerm {
+  text-align: center;
+  width: 100%;
+  border: 3px solid #004e59;
+  padding: 5px;
+  height: 3rem;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1.5rem;
+}
+
+/* Profile Completion Form */
+.form-title{
+  text-align: center;
+  margin-top: 15px;
+}
+
+.profile-completion{
+  text-align: center;
+  padding: 15px;
+  margin: 10px;
+  box-shadow: 1px 2px 0px 1px black;
+  background-image: linear-gradient(#eaeaea, #ffffff);
+  color: rgb(0, 0, 0);
+}
+
+.profile-label{
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+.form-check{
+  margin-top: 5px
 }
