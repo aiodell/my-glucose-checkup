@@ -32,8 +32,6 @@ const CreateProfile = () => {
 			day: day,
 			year: year,
 			phone: phone,
-			allow_followers: noFollows,
-			family_member: isFamily
 		}
 
 		fetch("/profiles", {
@@ -50,9 +48,6 @@ const CreateProfile = () => {
 			}
 		})
 	}
-
-	const handleAllowFollowers = (e) => {setNoFollows(e => !e)}
-	const handleFamilyCheck = (e) => {setIsFamily(e => !e)}
 
 	return(
 		<Container className="container-style">
@@ -72,20 +67,6 @@ const CreateProfile = () => {
 				<Form.Group className="mb=3" controlId="phone">
 					<Form.Label className="profile-label">Phone Number</Form.Label>
 					<Form.Control type="text" placeholder="Enter Phone Number" onChange={(e) => setPhone(e.target.value)}/>
-				</Form.Group>
-				<Form.Group className="mb=3" controlId="allow_followers">
-					<Form.Check
-						type="checkbox"
-						label= "I want followers"
-						onChange={handleAllowFollowers}
-					/>
-				</Form.Group>	
-				<Form.Group className="mb=3" controlId="family_member">
-					<Form.Check
-						type="checkbox"
-						label="I am a family member"
-						onChange={handleFamilyCheck}
-					/>
 				</Form.Group>
 				<Button type="submit" className="delete-btn">Submit</Button>		
 			</Form>

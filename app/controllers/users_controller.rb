@@ -21,17 +21,6 @@ class UsersController < ApplicationController
 		render json: User.find_by(id: session[:user_id]), status: :ok
 	end
 
-	# follow the user
-	def follow
-		@user = User.find(params{:id})
-		@current_user.followees << @user
-	end
-
-	def unfollow
-		@user = User.find(params[:id])
-		@current_user.followed_users.find_by(followee_id: @user.id).destroy
-	end
-
 	private
 
 	def user_params

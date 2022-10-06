@@ -39,9 +39,6 @@ const NavBar = ({updateUser, currentUser}) => {
 						<NavLink className="nav-link" to="/me">
 							<Nav.Item>My Account</Nav.Item>
 						</NavLink>
-						<NavLink className="nav-link" to="/following">
-							<Nav.Item>Following</Nav.Item>
-						</NavLink>
 						<NavLink className="nav-link" to="/users">
 							<Nav.Item>All Users</Nav.Item>
 						</NavLink>																		
