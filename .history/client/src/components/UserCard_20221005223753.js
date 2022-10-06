@@ -10,16 +10,6 @@ const[isFollowing, setIsFollowing] = useState(false)
 
 const toggle = () => {setIsFollowing( prev => !prev)}
 
-useEffect(() => {
-  const data = window.localStorage.getItem("isFollowing")
-  if (data !== null) setIsFollowing(JSON.parse(data))
-}, [])
-
-
-useEffect(() => {
-  window.localStorage.setItem("isFollowing", JSON.stringify(isFollowing))
-}, [isFollowing])
-
 const handleFollow = () => {
   
   const following = currentUser ? {

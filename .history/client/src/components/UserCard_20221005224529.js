@@ -15,7 +15,6 @@ useEffect(() => {
   if (data !== null) setIsFollowing(JSON.parse(data))
 }, [])
 
-
 useEffect(() => {
   window.localStorage.setItem("isFollowing", JSON.stringify(isFollowing))
 }, [isFollowing])

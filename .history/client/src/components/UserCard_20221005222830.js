@@ -8,17 +8,16 @@ const UserCard = ({user, currentUser, addNewFollow, deleteFollow}) => {
 const [errors, setErrors] = useState([])
 const[isFollowing, setIsFollowing] = useState(false)
 
-const toggle = () => {setIsFollowing( prev => !prev)}
 
 useEffect(() => {
-  const data = window.localStorage.getItem("isFollowing")
-  if (data !== null) setIsFollowing(JSON.parse(data))
+  setIsFollowing(JSON.parse(window.sessionStorage.getItem("isFollowing")))
 }, [])
 
-
 useEffect(() => {
-  window.localStorage.setItem("isFollowing", JSON.stringify(isFollowing))
+  window.sessionStorage.setItem("isFollowing", isFollowing)
 }, [isFollowing])
+
+console.log(isFollowing)
 
 const handleFollow = () => {
   
@@ -68,7 +67,7 @@ const handleFollow = () => {
 				Also known as: <b> {user.username} </b>	
 			</Accordion.Body>
 			{user.has_profile ? <Accordion.Body>
-        <Button onClick={toggle}>{isFollowing ? "Stop Notifications" : "Get notified"}</Button>		
+        <Button onClick={handleFollow}>{isFollowing ? "Stop Notifications" : "Get notified"}</Button>		
 			</Accordion.Body> 
       : <Accordion.Body>
         This user has not yet created a profile to be followed

@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container"
 import Card from 'react-bootstrap/Card';
 import Accordion from "react-bootstrap/Accordion"
 
-const UserProfile = ({currentUser}) => {
+const UserProfile = ({currentUser, users, following}) => {
 	const history = useHistory()
 
 	const renderFollowing = currentUser.followees?.map((user) => {

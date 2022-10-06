@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react"
+import {useState} from "react"
 import Card from "react-bootstrap/Card"
 import Accordion from "react-bootstrap/Accordion"
 import Container from "react-bootstrap/Container"
@@ -7,18 +7,7 @@ import Button from "react-bootstrap/Button"
 const UserCard = ({user, currentUser, addNewFollow, deleteFollow}) => {
 const [errors, setErrors] = useState([])
 const[isFollowing, setIsFollowing] = useState(false)
-
-const toggle = () => {setIsFollowing( prev => !prev)}
-
-useEffect(() => {
-  const data = window.localStorage.getItem("isFollowing")
-  if (data !== null) setIsFollowing(JSON.parse(data))
-}, [])
-
-
-useEffect(() => {
-  window.localStorage.setItem("isFollowing", JSON.stringify(isFollowing))
-}, [isFollowing])
+console.log(isFollowing)
 
 const handleFollow = () => {
   
@@ -32,7 +21,7 @@ const handleFollow = () => {
       method: "DELETE",
       headers: {"Content-Type": "application/json"}
     }).then(() => {
-      setIsFollowing(prev => !prev)
+      setIsFollowing(!isFollowing)
       // deleteFollow(user.id)
     })
   ) : ( 
@@ -45,7 +34,7 @@ const handleFollow = () => {
   }).then(r => {
     if(r.ok){
       r.json().then(newFollow => {
-        setIsFollowing(prev => !prev)
+        setIsFollowing(!isFollowing)
         // addNewFollow(newFollow)
       })
     }else{
@@ -68,7 +57,7 @@ const handleFollow = () => {
 				Also known as: <b> {user.username} </b>	
 			</Accordion.Body>
 			{user.has_profile ? <Accordion.Body>
-        <Button onClick={toggle}>{isFollowing ? "Stop Notifications" : "Get notified"}</Button>		
+        <Button onClick={handleFollow}>{isFollowing ? "Stop Notifications" : "Get notified"}</Button>		
 			</Accordion.Body> 
       : <Accordion.Body>
         This user has not yet created a profile to be followed
