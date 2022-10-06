@@ -37,7 +37,7 @@ const AllReadings = ({readings, setReadings }) => {
 	const renderReadings = readings.map((bgl) => {
 		return(
 			<Card className="bgl-card" key= {bgl.id}>
-				<Card.Body className="link-text-style" as={Link} to= {`/bgls/${bgl.id}`}>
+				<Card.Body className="text-style" as={Link} to= {`/bgls/${bgl.id}`}>
 					<Card.Title className="card-title">
 						{bgl.value} mg/dl
 					</Card.Title>
@@ -45,7 +45,7 @@ const AllReadings = ({readings, setReadings }) => {
 						{bgl.created_at} 
 					</Card.Text>
 				</Card.Body>
-				<Button className="btns" onClick={() => handleDelete(bgl.id)}>
+				<Button className="delete-btn" onClick={() => handleDelete(bgl.id)}>
 					Delete
 				</Button>				
 			</Card>
@@ -92,7 +92,7 @@ const AllReadings = ({readings, setReadings }) => {
 		<>
 		{errors ? errors.map(e => <section>{e}</section>):null}		
 			<Container className="all-bgl-container-style">
-				<h1 className="title">All Readings</h1>
+				<h3 className="title">All Readings</h3>
 				<NavLink to="/bgls/new">
 					<Button className="btns">Add New</Button>				
 				</NavLink>

@@ -42,16 +42,16 @@ const Dashboard = ({currentUser}) => {
 
 	const renderLowest = lowestValue.slice(0,1).map((num) => {
 		return(
-			<Card as={Link} to={`/bgls/${num.id}`} className="link-text-style, all-style">
-				<Card.Body as="h2" key={num.id}> Lowest: {num.value}</Card.Body>
+			<Card as={Link} to={`/bgls/${num.id}`} className="link-text-style, avg-style">
+				<Card.Body as="h1" key={num.id}> Lowest: {num.value}</Card.Body>
 			</Card>
 		)	
 	})
 
 	const renderHighest = highestValue.slice(0,1).map((num)=> {
 		return(
-			<Card as={Link} to={`/bgls/${num.id}`} className="link-text-style, all-style">
-				<Card.Body as="h2" key={num.id}> Highest: {num.value}</Card.Body>
+			<Card as={Link} to={`/bgls/${num.id}`} className="link-text-style, avg-style">
+				<Card.Body as="h1" key={num.id}> Highest: {num.value}</Card.Body>
 			</Card>
 		)
 	})
@@ -59,7 +59,7 @@ const Dashboard = ({currentUser}) => {
 	const renderCurrent = highestId.slice(0,1).map((num) => {
 		return(
 		<>
-			<Card as={Link} to={`/bgls/${num.id}`} className="link-text-style, all-style">
+			<Card as={Link} to={`/bgls/${num.id}`} className="link-text-style, avg-style">
 				<Card.Body as="h1" key={num.id}> {num.value} </Card.Body>
 			</Card>
 		</>
@@ -78,22 +78,22 @@ const Dashboard = ({currentUser}) => {
 				<h1>Your Current Blood Glucose Level</h1>
 				{currentUser.admin ? 
 				<>
-					<Row className="row-style">
+					<Row className="current-row-size">
 						<p>You are in admin mode</p>
 							{renderCurrent}
 					</Row> 
 					<Row className="low-high-avg">
-						<Col className="col-low">{renderLowest}</Col>
+						<Col>{renderLowest}</Col>
 						<Col>
 							<Card className="bgls">
 									{renderAverage = 0 ? 
 										<h1> You do not have any readings!</h1> :
-										<Card.Body as="h3" className="all-style"> Average: {renderAverage}</Card.Body>
+										<Card.Body as="h2" className="avg-style"> Average: {renderAverage}</Card.Body>
 									}														
 							</Card>
 
 						</Col>
-						<Col className="col-high">{renderHighest}</Col>
+						<Col>{renderHighest}</Col>
 					</Row>
 					<div>
 						<NavLink to="/events">
@@ -111,16 +111,16 @@ const Dashboard = ({currentUser}) => {
 					</div>					
 				</> :
 				<>
-					<Row className="row-style">
+					<Row>
 						{renderCurrent}
 					</Row> 
 						<Row className="low-high-avg">
 							<Col>{renderLowest}</Col>
 							<Col>
-								<Card className="all-style">
+								<Card className="avg-style">
 									{renderAverage === 0 ? 
 										<h3> You do not have any readings!</h3> :
-										<Card.Body as="h2" > Average: {renderAverage}</Card.Body>
+										<Card.Body as="h1" > Average: {renderAverage}</Card.Body>
 									}							
 								</Card>
 							</Col>

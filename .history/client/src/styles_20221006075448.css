@@ -3,14 +3,14 @@
 
 body {
   font-family: 'DM Sans', sans-serif;
-  background-color:	#8c8c94;
+  background-color:	#89dee2;
   margin: 0px;
 }
 
 /*Universal */
 .btns {
-  background-image: linear-gradient(#b4bcbc, white, #b4bcbc);
-  color: black;
+  background-image: linear-gradient(#16c2d5, #ffffff,#16c2d5);
+  color: rgb(0, 0, 0);
   padding: 10px;
   margin: 5px;
   text-align: center;
@@ -23,7 +23,6 @@ body {
   text-align: center;
   padding: 10px;
   position: relative;
-  width: fit-content
 }
 
 .navbar-brand{
@@ -69,17 +68,14 @@ body {
 .title{
   padding: 20px;
   position: relative;
-  font-family: 'Carter One', cursive;
-  color: white;
-  text-shadow: 2px 2px 2px black;
 }
 
 /*Dashbord */
 .dash-container{
   margin-top: 50px;
   padding: 30px;
-  background-image:linear-gradient(#b4bcbc, white);
-  box-shadow: 1px 1px 2px 1px black;
+  background-image:linear-gradient(#f8e7e0, white);
+  box-shadow: 2px 2px 2px 2px black;
   border-radius: 5px;
   position: relative;
 }
@@ -102,7 +98,7 @@ body {
 
 .low-high-avg{
   padding-top: 10px;
-  padding-bottom: 20px;
+  margin-left: 2rem;
   position: relative;
 }
 
@@ -123,7 +119,7 @@ body {
 
 .row-style{
   padding-left: 44%;
-  display: inline-block;
+  display: inline-block
 }
 
 /*Events */

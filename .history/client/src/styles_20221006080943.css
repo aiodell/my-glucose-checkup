@@ -70,6 +70,7 @@ body {
   padding: 20px;
   position: relative;
   font-family: 'Carter One', cursive;
+  font: 50%;
   color: white;
   text-shadow: 2px 2px 2px black;
 }

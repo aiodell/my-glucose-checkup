@@ -43,7 +43,7 @@ const Dashboard = ({currentUser}) => {
 	const renderLowest = lowestValue.slice(0,1).map((num) => {
 		return(
 			<Card as={Link} to={`/bgls/${num.id}`} className="link-text-style, all-style">
-				<Card.Body as="h2" key={num.id}> Lowest: {num.value}</Card.Body>
+				<Card.Body as="h1" key={num.id}> Lowest: {num.value}</Card.Body>
 			</Card>
 		)	
 	})
@@ -51,7 +51,7 @@ const Dashboard = ({currentUser}) => {
 	const renderHighest = highestValue.slice(0,1).map((num)=> {
 		return(
 			<Card as={Link} to={`/bgls/${num.id}`} className="link-text-style, all-style">
-				<Card.Body as="h2" key={num.id}> Highest: {num.value}</Card.Body>
+				<Card.Body as="h1" key={num.id}> Highest: {num.value}</Card.Body>
 			</Card>
 		)
 	})
@@ -120,7 +120,7 @@ const Dashboard = ({currentUser}) => {
 								<Card className="all-style">
 									{renderAverage === 0 ? 
 										<h3> You do not have any readings!</h3> :
-										<Card.Body as="h2" > Average: {renderAverage}</Card.Body>
+										<Card.Body as="h3" > Average: {renderAverage}</Card.Body>
 									}							
 								</Card>
 							</Col>

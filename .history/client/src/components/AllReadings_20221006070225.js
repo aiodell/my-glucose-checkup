@@ -92,7 +92,7 @@ const AllReadings = ({readings, setReadings }) => {
 		<>
 		{errors ? errors.map(e => <section>{e}</section>):null}		
 			<Container className="all-bgl-container-style">
-				<h1 className="title">All Readings</h1>
+				<h3 className="title">All Readings</h3>
 				<NavLink to="/bgls/new">
 					<Button className="btns">Add New</Button>				
 				</NavLink>

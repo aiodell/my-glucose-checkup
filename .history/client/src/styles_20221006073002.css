@@ -3,14 +3,14 @@
 
 body {
   font-family: 'DM Sans', sans-serif;
-  background-color:	#8c8c94;
+  background-color:	#89dee2;
   margin: 0px;
 }
 
 /*Universal */
 .btns {
-  background-image: linear-gradient(#b4bcbc, white, #b4bcbc);
-  color: black;
+  background-image: linear-gradient(#16c2d5, #ffffff,#16c2d5);
+  color: rgb(0, 0, 0);
   padding: 10px;
   margin: 5px;
   text-align: center;
@@ -23,7 +23,6 @@ body {
   text-align: center;
   padding: 10px;
   position: relative;
-  width: fit-content
 }
 
 .navbar-brand{
@@ -69,18 +68,15 @@ body {
 .title{
   padding: 20px;
   position: relative;
-  font-family: 'Carter One', cursive;
-  color: white;
-  text-shadow: 2px 2px 2px black;
 }
 
 /*Dashbord */
 .dash-container{
-  margin-top: 50px;
-  padding: 30px;
-  background-image:linear-gradient(#b4bcbc, white);
-  box-shadow: 1px 1px 2px 1px black;
-  border-radius: 5px;
+  margin-top: 100px;
+  padding: 20px;
+  background: #f8e7e0;
+  box-shadow: 2px 2px 2px 2px black;
+  border-radius: 15px;
   position: relative;
 }
 
@@ -101,8 +97,7 @@ body {
 }
 
 .low-high-avg{
-  padding-top: 10px;
-  padding-bottom: 20px;
+  padding: 20px;
   position: relative;
 }
 
@@ -111,19 +106,6 @@ body {
   text-shadow: 2px 2px 2px black;
   margin-top: 20px;
   color: white
-}
-
-.all-style{
-  text-decoration: none;
-  color: black;
-  margin-top: 10px;
-  box-shadow: 1px 1px 1px 2px black;
-  max-width:fit-content;
-}
-
-.row-style{
-  padding-left: 44%;
-  display: inline-block;
 }
 
 /*Events */
@@ -166,10 +148,9 @@ body {
   max-width: 50%;
 }
 
-.link-text-style {
+.link-text-style{
   text-decoration: none;
   color: black;
-  margin-top: 10px;
 }
 
 .pages {
