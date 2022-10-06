@@ -15,7 +15,6 @@ useEffect(() => {
   if (data !== null) setIsFollowing(JSON.parse(data))
 }, [])
 
-
 useEffect(() => {
   window.localStorage.setItem("isFollowing", JSON.stringify(isFollowing))
 }, [isFollowing])
@@ -68,7 +67,10 @@ const handleFollow = () => {
 				Also known as: <b> {user.username} </b>	
 			</Accordion.Body>
 			{user.has_profile ? <Accordion.Body>
-        <Button onClick={toggle}>{isFollowing ? "Stop Notifications" : "Get notified"}</Button>		
+      {isFollowing && (
+        <Button onClick={toggle}>Stop Notifications</Button>		
+      )}
+        
 			</Accordion.Body> 
       : <Accordion.Body>
         This user has not yet created a profile to be followed

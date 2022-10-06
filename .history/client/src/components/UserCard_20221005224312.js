@@ -12,9 +12,10 @@ const toggle = () => {setIsFollowing( prev => !prev)}
 
 useEffect(() => {
   const data = window.localStorage.getItem("isFollowing")
-  if (data !== null) setIsFollowing(JSON.parse(data))
+  setIsFollowing(JSON.parse(data))
 }, [])
 
+console.log(isFollowing)
 
 useEffect(() => {
   window.localStorage.setItem("isFollowing", JSON.stringify(isFollowing))
