@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=DM+Sans&display=swap');
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color:	#8c8c94;
+  margin: 0px;
+}
+
+/*Universal */
+.btns {
+  background-image: linear-gradient(#2c3434 #ffffff,#16c2d5);
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  margin: 5px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0px 2px 0px 1px black;
+  text-decoration: none;
+}
+
+.container-style{
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  width: fit-content
+}
+
+.navbar-brand{
+  font-family: 'Carter One', cursive;
+  font-size: 2rem;
+  text-align:left
+}
+
+/*Home Page */
+.Home {
+  text-align: center;
+}
+
+.home-background {
+  background-color: #88c7b2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.welcome {
+  font-family: 'Carter One', cursive;
+  text-shadow: 2px 2px black;
+  text-align: center;
+}
+
+.home-btn-div {
+  align-content: center;
+}
+
+/*Forms */
+.form-style{
+  margin-top: 100px;
+  border-radius: 20px;
+  box-shadow: 0px 2px 0px 1px black;
+  background-image: linear-gradient(#67eabe, #ffffff);
+  color: rgb(0, 0, 0);
+}
+.title{
+  padding: 20px;
+  position: relative;
+}
+
+/*Dashbord */
+.dash-container{
+  margin-top: 50px;
+  padding: 30px;
+  background-image:linear-gradient(#f8e7e0, white);
+  box-shadow: 2px 2px 2px 2px black;
+  border-radius: 5px;
+  position: relative;
+}
+
+.current-bgl{
+  align-content: center;
+  margin-top: 20px;
+  text-align: center;
+  display: relative;
+  position:relative;
+}
+
+.current-txt{
+  text-align: center;
+  font-size: 4rem;
+  padding-top: 40px;
+  padding-left: 5px;
+  position: relative;
+}
+
+.low-high-avg{
+  padding-top: 10px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.dash-title{
+  font-family: 'Carter One', cursive;
+  text-shadow: 2px 2px 2px black;
+  margin-top: 20px;
+  color: white
+}
+
+.all-style{
+  text-decoration: none;
+  color: black;
+  margin-top: 10px;
+  box-shadow: 1px 1px 1px 2px black;
+  max-width:fit-content;
+}
+
+.row-style{
+  padding-left: 44%;
+  display: inline-block;
+}
+
+/*Events */
+
+.list{
+  list-style: none;
+  padding: 5px;
+  font-size: 150%;
+}
+
+.event-container-style{
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  margin: 5px;
+}
+
+.delete-btn{
+  background-image: linear-gradient(#67eabe, #ffffff);
+  color: rgb(0, 0, 0);
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+  box-shadow: 0px 2px 0px 1px black;
+  text-decoration: none;
+}
+.event-card{
+  vertical-align: middle;
+  left: 39%;
+  position: relative;
+}
+
+/*All bgls*/
+.all-bgl-container-style{
+  align-content: center;
+  margin-top: 20px;
+  text-align: center;
+  display: relative;
+  position:relative;
+  max-width: 50%;
+}
+
+.link-text-style {
+  text-decoration: none;
+  color: black;
+  margin-top: 10px;
+}
+
+.pages {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.bgl-card{
+  margin: 10px;
+  text-decoration: none;
+  color: black;
+  box-shadow: 0px 2px 0px 2px black;
+}
+
+.card-title{
+  font-size: 150%;
+}
+
+.search {
+  width: 50%;
+  text-align: center;
+
+  position: relative;
+  display: block;
+  margin: auto;
+  padding: 2rem;
+}
+
+.searchTerm {
+  text-align: center;
+  width: 100%;
+  border: 3px solid #004e59;
+  padding: 5px;
+  height: 3rem;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1.5rem;
+}
+
+/* Profile Completion Form */
+.form-title{
+  text-align: center;
+  margin-top: 15px;
+}
+
+.profile-completion{
+  text-align: center;
+  padding: 15px;
+  margin: 10px;
+  box-shadow: 1px 2px 0px 1px black;
+  background-image: linear-gradient(#eaeaea, #ffffff);
+  color: rgb(0, 0, 0);
+}
+
+.profile-label{
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+.form-check{
+  margin-top: 5px
+}
+
+/*profile container*/
+.profile-container{
+  align-content: center;
+  margin-top: 20px;
+  text-align: center;
+  display: relative;
+  position:relative;
+  max-width: 50%;
+}
