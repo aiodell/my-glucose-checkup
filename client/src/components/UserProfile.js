@@ -1,9 +1,20 @@
 import Button from "react-bootstrap/Button"
-import {NavLink } from "react-router-dom"
+import {NavLink, useHistory } from "react-router-dom"
 import Container from "react-bootstrap/Container"
 import Card from 'react-bootstrap/Card';
+import Accordion from "react-bootstrap/Accordion"
 
-const UserProfile = ({currentUser}) => {
+const UserProfile = ({currentUser, users, following}) => {
+	const history = useHistory()
+
+	const renderFollowing = currentUser.followees?.map((user) => {
+		return(
+			<Card>
+				<Card.Title>{user.first_name} {user.last_name}</Card.Title>
+				<Card.Text></Card.Text>
+			</Card>
+		)
+	})
 
 	return(
 		<div>
@@ -20,12 +31,14 @@ const UserProfile = ({currentUser}) => {
 						<Card.Text><b>Email: </b>{currentUser.email}</Card.Text>
 						<Card.Text><b>Phone Number: </b>{currentUser.profile.phone}</Card.Text>
 					</Card.Body>
-					<Card.Body>
-						<Card.Text><b>Family Member? </b>{currentUser.profile.family_member ? "Yes": "No"}</Card.Text>
-						<Card.Text><b>Allows Followers? </b>{currentUser.profile.allow_followers ? "Yes" : "No" }</Card.Text>
-						<Button>Edit Permissions</Button>
-					</Card.Body>
 				</Card>
+				{/* who the user is following */}
+				<Accordion as={Card} className= "user-profile">
+					<Accordion.Header as="h2" className="follow-header">
+						Following
+					</Accordion.Header>
+					<Accordion.Body>{renderFollowing}</Accordion.Body>
+				</Accordion>							
 			</Container>
 			:
 				<Container className="container-style">

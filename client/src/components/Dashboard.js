@@ -6,11 +6,15 @@ import Button from "react-bootstrap/Button"
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-const Dashboard = ({currentUser}) => {
+const Dashboard = ({currentUser, users, following}) => {
 	const[readings, setReadings] = useState([])
 	const[errors, setErrors] = useState([])
 	const history= useHistory()
 
+	console.log(users)
+	console.log(following)
+
+	// get the bgls for the user
 	useEffect(() => {
 		fetch("/bgls")
 		.then(r => {
@@ -67,7 +71,8 @@ const Dashboard = ({currentUser}) => {
 		</>
 		)
 	})
- 
+	
+	// will return a dashboard alongside any highs and lows of followed users
 	return(
 		<Container className="container-style">	
 			{errors ? errors.map(e => <section>{e}</section>):null}
@@ -120,10 +125,10 @@ const Dashboard = ({currentUser}) => {
 						</Row>
 						<div>
 							<NavLink to="/bgls/all">
-								<Button className="btns">All Test Readings</Button>
+								<Button className="btns">All Readings</Button>
 							</NavLink>
 							<NavLink to="/bgls/new">
-								<Button className="btns">New Test Reading</Button>
+								<Button className="btns">New Reading</Button>
 							</NavLink>								
 						</div>					
 				</> }

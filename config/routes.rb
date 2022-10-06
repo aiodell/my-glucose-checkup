@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
+  resources :relationships
   resources :profiles
   resources :events
   resources :bgls
   resources :bgl_events
   resources :users
-  resources :follows
 
   # basic routes
   post "/login", to: "sessions#create"

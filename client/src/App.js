@@ -20,6 +20,7 @@ const App = () => {
   const [readings, setReadings] = useState([])
   const [events, setEvents] = useState([])
   const [users, setUsers] = useState([])
+  const [following, setFollowing] = useState([])
   const history = useHistory()
 
   useEffect( () => {
@@ -51,6 +52,12 @@ const App = () => {
     .then(setUsers)
   }, [])
 
+  useEffect(() => {
+    fetch("/relationships")
+    .then((r) => r.json())
+    .then(setFollowing)
+  }, [])
+
   const updateUser = (user) => setCurrentUser(user)
 
   const addNewReading = (newReading) => {setReadings(readings => [...readings, newReading])}
@@ -65,10 +72,19 @@ const App = () => {
 
   const updateBgl = (updatedBgl) => {
     setReadings((readings) => readings.map(bgl => bgl.id === updatedBgl.id ? updatedBgl : bgl))
-    console.log(readings)
   }
 
-  return (
+  // add follower to list
+  const addNewFollow = (newFollow) => {
+    setFollowing(following => [...following, newFollow])
+    }
+
+  // delete follower from the list
+  const deleteFollow = (deletedFollow) => {
+    setFollowing((following) => following.filter((following) => following.id !== deletedFollow))
+  }
+
+   return (
    <div>
     <NavBar 
       currentUser = {currentUser}
@@ -86,6 +102,8 @@ const App = () => {
         currentUser = {currentUser}
         readings = {readings}
         setReadings = {setReadings}
+        following = {following}  // will be used to display the highs and lows of a user being followed
+        users = {users}
         />
       </Route>
       <Route exact path= "/bgls/all">
@@ -117,6 +135,7 @@ const App = () => {
       <Route exact path= "/me">
         <UserProfile 
         currentUser = {currentUser}
+        users = {users}
         />
       </Route>
       <Route exact path = "/create-profile">
@@ -125,7 +144,10 @@ const App = () => {
       <Route exact path= "/users">
         <AllUsers 
         currentUser = {currentUser}
-        users = {users} />
+        users = {users}
+        addNewFollow = {addNewFollow}
+        deleteFollow = {deleteFollow}
+        />
       </Route>
       <Route exact path="/">
         <Home 

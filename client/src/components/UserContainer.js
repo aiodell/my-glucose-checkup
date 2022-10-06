@@ -1,6 +1,6 @@
 import UserCard from "./UserCard"
 
-const UserContainer = ({users, currentUser}) => {
+const UserContainer = ({users, currentUser, addNewFollow, deleteFollow}) => {
 
 	return(
 		<ul>
@@ -9,6 +9,8 @@ const UserContainer = ({users, currentUser}) => {
 					key = {user.id}
 					user = {user}
 					currentUser = {currentUser}
+					addNewFollow = {addNewFollow}
+					deleteFollow = {deleteFollow}
 				/>
 			))}
 		</ul>
