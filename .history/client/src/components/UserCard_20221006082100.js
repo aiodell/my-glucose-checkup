@@ -51,7 +51,7 @@ const handleUnfollow = () => {
     {errors ? errors.map(e => <section>{e}</section>):null}
 		<Accordion as={Card} key={user.id} className="user-card">
 			<Accordion.Header as="h2" className="user-header">
-			<strong>{user.first_name} {user.last_name}</strong>
+			{user.first_name} {user.last_name}
 			</Accordion.Header>
 			<Accordion.Body>
 				Also known as: <b> {user.username} </b>	
@@ -59,8 +59,8 @@ const handleUnfollow = () => {
       {/* give the user the ability to follow someone if they already have a profile made */}
 			{user.has_profile ?
       <Accordion.Body>
-     {userFollows ?<Button onClick={handleUnfollow} className="btns">Stop Notifications</Button> : 
-      <Button onClick={handleFollow} className="btns"><strong>Get notified</strong></Button>
+     {userFollows ?<Button onClick={handleUnfollow}>Stop Notifications</Button> : 
+      <Button onClick={handleFollow}>Get notified</Button>
       } 
 			</Accordion.Body> 
       : <Accordion.Body>

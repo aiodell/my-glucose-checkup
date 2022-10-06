@@ -249,3 +249,7 @@ body {
   padding: 10px;
   background-image: linear-gradient(#eaeaea, #ffffff);
 }
+
+.user-header{
+  font-weight:200
+}

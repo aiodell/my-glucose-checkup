@@ -246,6 +246,5 @@ body {
 
 /*UserCard*/
 .user-card{
-  padding: 10px;
-  background-image: linear-gradient(#eaeaea, #ffffff);
+  padding: 20px;
 }

@@ -13,6 +13,7 @@ body {
   color: black;
   padding: 10px;
   margin: 5px;
+  margin-top: 5px;
   text-align: center;
   border-radius: 10px;
   box-shadow: 0px 2px 0px 1px black;
@@ -242,10 +243,4 @@ body {
   display: relative;
   position:relative;
   max-width: 50%;
-}
-
-/*UserCard*/
-.user-card{
-  padding: 10px;
-  background-image: linear-gradient(#eaeaea, #ffffff);
 }

@@ -8,7 +8,7 @@ function SearchBar({ setSearch }) {
 
   return (
     <div className="search">
-      <h1 className="title">Search User</h1>
+      <h2>Search User</h2>
       <input type="text" className="searchTerm" onChange={handleSearch}/>
     </div>
   )

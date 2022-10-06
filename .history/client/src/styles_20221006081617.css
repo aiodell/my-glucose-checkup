@@ -243,9 +243,3 @@ body {
   position:relative;
   max-width: 50%;
 }
-
-/*UserCard*/
-.user-card{
-  padding: 10px;
-  background-image: linear-gradient(#eaeaea, #ffffff);
-}

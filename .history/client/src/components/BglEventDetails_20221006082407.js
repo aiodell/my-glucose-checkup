@@ -41,14 +41,14 @@ const BglEventDetails = ({deleteReading, updateBgl, readings}) => {
 	return(
 		<Container className= "container-style">
 		{errors ? errors.map(e => <section>{e}</section>):null}		
-		<h1 className="title">Blood Glucose Level Details:</h1>
+		<h3>Blood Glucose Level Details:</h3>
 			<Card>
 				<Card.Body>
 					<Card.Title>
 						<h1>{reading?.value}</h1>
 					</Card.Title>
 					<Card.Subtitle>
-						<h3>{reading?.created_at}</h3>
+						<h3 className="title">{reading?.created_at}</h3>
 					</Card.Subtitle>
 					<div>
 						<h4>Events</h4>	

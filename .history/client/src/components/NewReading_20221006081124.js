@@ -41,8 +41,8 @@ const NewReading = ({addNewReading}) => {
 			{errors ? errors.map(e => <section>{e}</section>):null}
 			<Form className="form-style" onSubmit={onSubmit}>
 				<Form.Group className="mb=3" controlId="value">
-					<Form.Label as="h3">Enter BGL</Form.Label>
-					<Form.Control className="form-input" type="text" placeholder="Enter value" onChange= {(e) => setValue(e.target.value)}/>				
+					<Form.Label>Enter BGL</Form.Label>
+					<Form.Control type="text" placeholder="Enter value" onChange= {(e) => setValue(e.target.value)}/>				
 				</Form.Group>
 				<div>
 					<Button className="btns" type="submit" value="submit">Submit</Button>

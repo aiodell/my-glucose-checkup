@@ -60,7 +60,7 @@ const handleUnfollow = () => {
 			{user.has_profile ?
       <Accordion.Body>
      {userFollows ?<Button onClick={handleUnfollow} className="btns">Stop Notifications</Button> : 
-      <Button onClick={handleFollow} className="btns"><strong>Get notified</strong></Button>
+      <Button onClick={handleFollow} className="btns"><strong>Get notified</strong>Get notified</Button>
       } 
 			</Accordion.Body> 
       : <Accordion.Body>

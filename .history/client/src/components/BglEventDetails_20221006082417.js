@@ -48,7 +48,7 @@ const BglEventDetails = ({deleteReading, updateBgl, readings}) => {
 						<h1>{reading?.value}</h1>
 					</Card.Title>
 					<Card.Subtitle>
-						<h3>{reading?.created_at}</h3>
+						<h3 className="title">{reading?.created_at}</h3>
 					</Card.Subtitle>
 					<div>
 						<h4>Events</h4>	
